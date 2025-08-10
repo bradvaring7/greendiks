@@ -122,6 +122,21 @@ body { font-family: Arial, sans-serif; }
   left: 0;
 }
 
+/* Close Mobile Menu */
+.mobile-menu button#close-menu {
+  background: none;
+  border: none;
+  color: #FFF;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: right;
+}
+.mobile-menu button#close-menu:hover {
+  color: #19e0ff;
+}
+
 /* Main content */
 .main-content {
   margin-left: 60px;

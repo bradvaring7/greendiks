@@ -1,39 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fixed Layout with Sidebar</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hybrid Sidebar + Top Nav</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-grey2">
 
-<!-- Top bar -->
-<header class="top-bar">
-  <button id="menu-toggle" aria-label="Toggle Menu">&#9776;</button>
-  <h1 class="site-title">My Website</h1>
-</header>
+<!-- Left icon sidebar -->
+<aside class="sidebar txtr shadower">
+  <a href="#" title="Home"><i class="fas fa-home"></i><span>Home</span></a>
+  <a href="#" title="Search"><i class="fas fa-search"></i><span>Search</span></a>
+  <a href="#" title="Settings"><i class="fas fa-cog"></i><span>Settings</span></a>
+</aside>
 
-<!-- Sidebar -->
-<nav id="side-nav" class="side-nav">
+<!-- Top navigation -->
+<header class="top-bar shadower">
+  <button class="hamburger" id="menu-toggle" aria-label="Open menu"><i class="fas fa-bars"></i></button>
+  <nav class="top-nav"><div class="dropdown txtr">Brad Varing 🤓 😉 😎</div></nav></header>
+
+<!-- Slide-out mobile menu -->
+<nav id="mobile-menu" class="mobile-menu" aria-label="Mobile menu">
+  <button id="close-menu" aria-label="Close menu">&times;</button>
   <a href="#">Home</a>
-  <a href="#">About</a>
-  <a href="#">Services</a>
-  <a href="#">Contact</a>
+  <a href="#">Search</a>
+  <a href="#">Settings</a>
+  <hr />
+  <a href="#">Menu 1 - Link 1</a>
+  <a href="#">Menu 1 - Link 2</a>
+  <a href="#">Menu 2 - Link A</a>
 </nav>
 
 <!-- Main content -->
 <main class="main-content">
-  <h2>Welcome</h2>
-  <p>This is your main content area. Scroll to see how the top bar and footer stay fixed.</p>
+  <h1>Welcome</h1>
+  <p>This is your main content area. Resize the browser to see responsive behavior.</p>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia...</p>
-  <p>More content...</p>
-  <p>Keep scrolling...</p>
+  <p>More content here...</p>
+  <p>Keep scrolling to test fixed header and footer.</p>
 </main>
 
 <!-- Footer -->
-<footer class="footer">
-  <p>© 2025 My Website</p>
+<footer class="footer" style="line-height:0.8 !important; padding: 0">
+  <span style="font-family: cursive;">Brad Varing </span> &nbsp;© 2025 &nbsp; &nbsp;|&nbsp; &nbsp; <a href="greenix.altlassian.net/wiki/spaces/CX/" target="_blank"> CX KB </a> &nbsp;&nbsp;|&nbsp;&nbsp;  <a href="greenixpc.com" target="_blank"> GreenixPC </a> 
 </footer>
 
 <script src="script.js"></script>
