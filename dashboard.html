@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greendiks - Dark Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #191919ed;
+            background-image: radial-gradient(circle at 20% 20%, rgba(13, 18, 31, 0) 0, transparent 50%), radial-gradient(circle at 60% 60%, rgba(23, 23, 27, 0) 0, transparent 50%), radial-gradient(circle at 30% 30%, rgba(17, 18, 20, 0) 0, transparent 40%), repeating-linear-gradient(45deg, #000000bb 30px, #2f1e24 2px, transparent 2px, transparent 4px), repeating-linear-gradient(-45deg, #000 8.8px, rgba(28, 13, 26, .367) 30px, transparent 22px, transparent 30PX);
+            background-attachment: fixed;
+            background-size: 300px 300px, 250px 250px, 400px 400px, 40px 40px, 30px 30px;
+            background-position: 0 0, 150px 150px, 100px 50px, 0 0, 0 0;
+            color: #ffffff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px #f00ff60;
+            background: linear-gradient(45deg, #ffffff, #f00ff60, #ff00ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #cccccc;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+        }
+
+        /* Text Content Sections */
+        .text-section {
+            background: rgba(33, 0, 29, 0.8);
+            border: 1px solid #380031;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 255, 96, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .text-section h2 {
+            color: #f00ff60;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            text-shadow: 0 0 10px #f00ff60;
+        }
+
+        .text-section p {
+            line-height: 1.6;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+        }
+
+        .text-section .placeholder {
+            color: #888888;
+            font-style: italic;
+            border: 2px dashed #444444;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            background: rgba(68, 68, 68, 0.1);
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .project-card {
+            background: linear-gradient(145deg, #21001d, #380031);
+            border: 1px solid #380031;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(0, 255, 96, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 12px 35px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(240, 15, 255, 0.15);
+            border-color: #f00ff60;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #f00ff60, #ff00ff, #f00ff60);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 12px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .project-description {
+            color: #cccccc;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 0.95em;
+        }
+
+        .links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 10px;
+        }
+
+        .link-btn {
+            display: inline-block;
+            padding: 12px 16px;
+            background: linear-gradient(145deg, #380031, #21001d);
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid #380031;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(240, 15, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .link-btn:hover::before {
+            left: 100%;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 20px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(240, 15, 255, 0.4);
+            border-color: #f00ff60;
+            color: #f00ff60;
+            text-shadow: 0 0 10px #f00ff60;
+        }
+
+        .link-btn.primary {
+            background: linear-gradient(145deg, #f00ff60, #ff00ff);
+            color: #000000;
+            font-weight: bold;
+        }
+
+        .link-btn.primary:hover {
+            background: linear-gradient(145deg, #ff00ff, #f00ff60);
+            color: #000000;
+            box-shadow: 
+                0 6px 25px rgba(255, 0, 255, 0.4),
+                0 0 30px rgba(240, 15, 255, 0.6);
+        }
+
+        .link-btn.secondary {
+            background: linear-gradient(145deg, #380031, #21001d);
+            border-color: #380031;
+        }
+
+        .link-btn.secondary:hover {
+            background: linear-gradient(145deg, #21001d, #380031);
+            color: #f00ff60;
+            border-color: #f00ff60;
+        }
+
+        .link-btn.disabled {
+            background: #2a2a2a;
+            color: #666666;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .link-btn.disabled:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: #444444;
+            color: #666666;
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin: 50px 0 25px 0;
+            font-size: 1.8em;
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, #f00ff60, #ff00ff);
+            border-radius: 2px;
+        }
+
+        /* Stats/Info Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: linear-gradient(145deg, #21001d, #380031);
+            border: 1px solid #380031;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #f00ff60;
+            box-shadow: 0 5px 20px rgba(240, 15, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #f00ff60;
+            text-shadow: 0 0 15px #f00ff60;
+        }
+
+        .stat-label {
+            color: #cccccc;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .quick-actions .link-btn {
+            margin: 8px;
+            min-width: 150px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #333333;
+            color: #888888;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .links {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #21001d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #f00ff60, #ff00ff);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #ff00ff, #f00ff60);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 Greendiks Dashboard</h1>
+        <p class="subtitle">Your Dark Development Command Center</p>
+
+        <!-- Text Content Section -->
+        <div class="text-section">
+            <h2>📝 Project Overview</h2>
+            <div class="placeholder">
+                Add your project description here. This section can contain information about your project goals, current status, or any important announcements.
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">42</div>
+                <div class="stat-label">Total Projects</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">18</div>
+                <div class="stat-label">Active Tasks</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Completion Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Days Streak</div>
+            </div>
+        </div>
+
+        <div class="section-header">🚀 Development Projects</div>
+
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <div class="project-title">🎯 Main Project</div>
+                <div class="project-description">Your primary development project with full features and capabilities.</div>
+                <div class="links">
+                    <a href="#" class="link-btn primary">🔥 Launch</a>
+                    <a href="#" class="link-btn">📁 Files</a>
+                    <a href="#" class="link-btn">⚡ Code</a>
+                    <a href="#" class="link-btn">🌐 Live</a>
+                    <a href="#" class="link-btn">🐙 Repo</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">🔧 Tools & Utilities</div>
+                <div class="project-description">Collection of development tools and utility scripts for enhanced productivity.</div>
+                <div class="links">
+                    <a href="#" class="link-btn primary">🛠️ Tools</a>
+                    <a href="#" class="link-btn">📂 Browse</a>
+                    <a href="#" class="link-btn">⚙️ Config</a>
+                    <a href="#" class="link-btn">📊 Stats</a>
+                    <a href="#" class="link-btn">🔗 Links</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">📱 Mobile App</div>
+                <div class="project-description">Cross-platform mobile application with modern UI and seamless user experience.</div>
+                <div class="links">
+                    <a href="#" class="link-btn primary">📱 Demo</a>
+                    <a href="#" class="link-btn">💻 Dev</a>
+                    <a href="#" class="link-btn">🧪 Test</a>
+                    <a href="#" class="link-btn">🚀 Deploy</a>
+                    <a href="#" class="link-btn secondary">🔒 Private</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">🎨 Design System</div>
+                <div class="project-description">Comprehensive design system with components, colors, and styling guidelines.</div>
+                <div class="links">
+                    <a href="#" class="link-btn primary">🎨 Preview</a>
+                    <a href="#" class="link-btn">🖌️ Assets</a>
+                    <a href="#" class="link-btn">📋 Docs</a>
+                    <a href="#" class="link-btn">🎭 Theme</a>
+                    <a href="#" class="link-btn">💾 Export</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">🤖 AI Integration</div>
+                <div class="project-description">Machine learning models and AI-powered features for smart automation.</div>
+                <div class="links">
+                    <a href="#" class="link-btn primary">🧠 Train</a>
+                    <a href="#" class="link-btn">📊 Data</a>
+                    <a href="#" class="link-btn">🔍 Analyze</a>
+                    <a href="#" class="link-btn">⚡ API</a>
+                    <a href="#" class="link-btn disabled">🚧 Beta</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-title">📚 Documentation</div>
+                <div class="project-description">Comprehensive documentation, tutorials, and guides for all projects.</div>
+                <div class="links">
+                    <a href="#" class="link-btn primary">📖 Read</a>
+                    <a href="#" class="link-btn">✍️ Edit</a>
+                    <a href="#" class="link-btn">🔍 Search</a>
+                    <a href="#" class="link-btn">📤 Share</a>
+                    <a href="#" class="link-btn">💬 Wiki</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Additional Text Section -->
+        <div class="text-section">
+            <h2>🎯 Current Focus</h2>
+            <div class="placeholder">
+                Add information about your current priorities, ongoing tasks, or immediate goals. This section can be updated regularly to reflect your current work focus.
+            </div>
+        </div>
+
+        <div class="section-header">⚡ Quick Actions</div>
+        
+        <div class="quick-actions">
+            <a href="#" class="link-btn primary">🚀 New Project</a>
+            <a href="#" class="link-btn">📂 File Manager</a>
+            <a href="#" class="link-btn">⚙️ Settings</a>
+            <a href="#" class="link-btn">📊 Analytics</a>
+            <a href="#" class="link-btn">🔧 Tools</a>
+            <a href="#" class="link-btn secondary">📱 Mobile View</a>
+        </div>
+
+        <!-- Another Text Section -->
+        <div class="text-section">
+            <h2>📈 Progress & Updates</h2>
+            <div class="placeholder">
+                Track your progress, recent achievements, or upcoming milestones. This area is perfect for status updates and progress tracking.
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>✨ Greendiks Dark Dashboard - Built with passion</p>
+            <p>🌙 Last updated: August 10, 2025 | 💜 Made with dark magic</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add glowing effect to cards on hover
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 12px 35px rgba(0, 0, 0, 0.4), 0 0 30px rgba(240, 15, 255, 0.25)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.3), 0 0 20px rgba(240, 15, 255, 0.05)';
+                });
+            });
+
+            // Add click feedback for buttons
+            const buttons = document.querySelectorAll('.link-btn:not(.disabled)');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    if (this.getAttribute('href') === '#') {
+                        e.preventDefault();
+                        // Add a brief flash effect
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = '';
+                        }, 100);
+                    }
+                });
+            });
+
+            // Animate stats on scroll
+            const observerOptions = {
+                threshold: 0.7
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const statNumber = entry.target.querySelector('.stat-number');
+                        const finalNumber = parseInt(statNumber.textContent);
+                        let currentNumber = 0;
+                        
+                        const increment = finalNumber / 30;
+                        const timer = setInterval(() => {
+                            currentNumber += increment;
+                            if (currentNumber >= finalNumber) {
+                                currentNumber = finalNumber;
+                                clearInterval(timer);
+                            }
+                            statNumber.textContent = Math.floor(currentNumber) + (statNumber.textContent.includes('%') ? '%' : '');
+                        }, 50);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.stat-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

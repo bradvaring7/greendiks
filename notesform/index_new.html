@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Call Notes</title>
+  <style>
+    input {
+        font-size: 1.3rem;
+        font-family: monospace
+    }
+  </style>
+<body>
+
+
+<h1>Customer Info</h1>
+  <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12"  minlength="12" size="12" placeholder="Phone #"/>
+  <input type="number" id="account" name="account" min="10000" max="99999999" step="1" placeholder="Account #"><br>
+  <select name="branch" id="branch" place="Selet Branch">
+    <option value="Avon">Avon</option>
+    <option value="Bloomfield">Bloomfield</option>
+    <option value="Canton">Canton</option>  
+    <option value="Cherry Hill">Cherry Hill</option>
+    <option value="Chicago">Chicago</option>
+    <option value="Cincinnati">Cincinnati</option>
+    <option value="Cleveland">Cleveland</option>
+    <option value="Columbus">Columbus</option>
+    <option value="Dayton">Delaware</option>
+    <option value="Delaware">Delaware</option>
+    <option value="Des Moines">Des Moines</option>
+    <option value="Detroit">Detroit</option>
+    <option value="Fishers">Fishers</option>
+    <option value="Fort Wayne">Fort Wayne</option>
+    <option value="Grand Rapids">Grand Rapids</option>
+    <option value="Green Bay">Green Bay</option>
+    <option value="Hilliard">Hilliard</option>
+    <option value="Kalamazoo">Kalamazoo</option>
+    <option value="Kansas City">Kansas City</option>
+    <option value="Lansing">Lansing</option>
+    <option value="Lexington">Lexington</option>
+    <option value="Lansing">Lansing</option>
+    <option value="Louisville">Louisville</option>
+    <option value="Madison">Madison</option>
+    <option value="Milwaukee">Milwaukee</option>
+    <option value="Minneapolis">Minneapolis</option>
+    <option value="Munster">Munster</option>
+    <option value="Omaha">Omaha</option>
+    <option value="Philadelphia">Philadelphia</option>        
+    <option value="Pittsburgh">Pittsburgh</option>
+    <option value="Princeton">Princeton</option>
+    <option value="Rove Massachusetts">Rove Massachusetts</option>
+    <option value="Rove Michigan">Rove Michigan</option>
+    <option value="Rove Minnesota">Rove Minnesota</option>
+    <option value="Rove Wisconsin">Rove Wisconsin</option>
+    <option value="Salt Lake City">Salt Lake City</option>
+    <option value="South Bend">South Bend</option>
+    <option value="Toledo">Toledo</option>
+    <option value="Willow Grove">Willow Grove</option>
+    <option value="York">York</option>
+  </select>
+  <input type="text" id="name" name="name" cols="16" placeholder="Who?"><br>
+  <
+  <input type="text" id="callwhat" name='callwhat' cols="80" rows="2" placeholder="What?">
+  <input type="submit" value="Submit">
+</form>
+
+<p>Click the "Submit" button and the form-data will be sent to a page on the 
+server called "action_page.php".</p>
+
+</body>
+</html>

@@ -1117,8 +1117,7 @@ button {
 }
 
 .txtr {
-    font-weight: 400;
-    text-shadow: 2px 6px 8px #000, -1px -1px 1px #ffffff00
+    text-shadow: 2px 6px 8px #ff0000, 0px 8px 10px #ff0000
 }
 
 .hdr {

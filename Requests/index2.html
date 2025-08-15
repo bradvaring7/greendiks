@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Scheduling Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --fs-color: #A4262C;
+      --fs-bg: #F5CCCF;
+      --reservice-color: #005E50;
+      --reservice-bg: #CAF0CC;
+      --sched-color: #7150A6;
+      --sched-bg: #E6E0F0;
+      --rove-color: #4848A6;
+      --rove-bg: #D8D8EE;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 32px auto;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+      padding: 32px 24px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 1.8em;
+      color: var(--sched-color);
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .category, .subcat {
+      font-weight: bold;
+      font-size: 1.1em;
+      padding: 12px;
+      border-radius: 8px;
+      color: #fff;
+    }
+
+    .category.cat-fs { background: var(--fs-color); }
+    .category.cat-reservice { background: var(--reservice-color); }
+    .category.cat-route { background: var(--sched-color); }
+
+    .subcat.subcat-fs { background: var(--fs-bg); color: var(--fs-color); }
+    .subcat.subcat-reservice { background: var(--reservice-bg); color: var(--reservice-color); }
+    .subcat.subcat-sched { background: var(--sched-bg); color: var(--sched-color); }
+    .subcat.subcat-rove { background: var(--rove-bg); color: var(--rove-color); }
+
+    .action-link {
+      display: inline-block;
+      font-size: 1em;
+      font-weight: bold;
+      padding: 8px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin: 4px;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+
+    .action-fs { border-color: var(--fs-color); color: var(--fs-color); }
+    .action-fs:hover { background: var(--fs-color); color: #fff; }
+
+    .action-reservice { border-color: var(--reservice-color); color: var(--reservice-color); }
+    .action-reservice:hover { background: var(--reservice-color); color: #fff; }
+
+    .action-sched { border-color: var(--sched-color); color: var(--sched-color); }
+    .action-sched:hover { background: var(--sched-color); color: #fff; }
+
+    .action-rove { border-color: var(--rove-color); color: var(--rove-color); }
+    .action-rove:hover { background: var(--rove-color); color: #fff; }
+
+    .ref-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .ref-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f7f7f7;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    .ref-input {
+      width: 60px;
+      padding: 6px;
+      font-size: 1em;
+    }
+
+    .go-btn {
+      padding: 6px 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .go-fs { background: var(--fs-color); color: #fff; }
+    .go-reservice { background: var(--reservice-color); color: #fff; }
+    .go-sched { background: var(--sched-color); color: #fff; }
+
+    .tracking-section,
+    .quickref-section {
+      margin-top: 48px;
+    }
+
+    .tracking-title,
+    .quickref-title {
+      font-size: 1.4em;
+      color: var(--sched-color);
+      margin-bottom: 16px;
+      font-weight: bold;
+    }
+
+    .tracking-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .tracking-links a {
+      text-decoration: none;
+      text-align: center;
+      color: #222;
+      font-size: 1em;
+    }
+
+    .tracking-links img {
+      width: 100px;
+      height: 80px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+      margin-bottom: 6px;
+    }
+
+    .quickref-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffcc;
+      border: 2px solid #d0cece;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .quickref-table td {
+      padding: 24px;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Scheduling Requests</h1>
+
+    <div class="grid-4">
+      <div class="category cat-fs">FIELD SUPPORT</div>
+      <div class="category cat-reservice">RESERVICE REQUESTS</div>
+      <div class="category cat-route">ROUTE CREATION</div>
+      <div class="category cat-route">SCHEDULING</div>
+    </div>
+
+    <div class="grid-4">
+      <div class="subcat subcat-fs">Priority</div>
+      <div class="subcat subcat-reservice">Reservice</div>
+      <div class="subcat subcat-sched">Scheduling</div>
+      <div class="subcat subcat-rove">Rove</div>
+    </div>
+
+    <div class="grid-4">
+      <a class="action-link action-fs" href="https://greenix.atlassian.net/servicedesk/customer/portal/40/group/113/create/518" target="_blank">FORM</a>
+      <a class="action-link action-reservice" href="https://greenix.atlassian.net/servicedesk/customer/portal/31/group/100/create/390" target="_blank">FORM</a>
+      <a class="action-link action-sched" href="https://greenix.atlassian.net/servicedesk/customer/portal/32/group/104/create/399" target="_blank">FORM</a>
+      <a class="action-link action-rove" href="https://greenix.atlassian.net/servicedesk/customer/portal/32/group/1148/create/1751" target="_blank">FORM</a>
+    </div>
+
+    <div class="grid-4">
+      <a class="action-link action-fs" href="https://greenix.atlassian.net/servicedesk/customer/user/requests?pIds=40&page=1&reporter=all&rtIds=518&statuses=open&statuses=closed" target="_blank">VIEW</a>
+      <a class="action-link action-reservice" href="https://greenix.atlassian.net/servicedesk/customer/user/requests?pIds=31&page=1&reporter=all&rtIds=390&statuses=open&statuses=closed" target="_blank">VIEW</a>
+      <a class="action-link action-sched" href="https://greenix.atlassian.net/servicedesk/customer/user/requests?pIds=32&page=1&reporter=all&rtIds=399&statuses=open&statuses=closed" target="_blank">VIEW</a>
+      <a class="action-link action-rove" href="https://greenix.atlassian.net/servicedesk/customer/user/requests?pIds=32&page=1&reporter=all&rtIds=1751&statuses=open&statuses=closed" target="_blank">VIEW</a>
