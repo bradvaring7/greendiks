@@ -9,6 +9,7 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
+  
 </head>
 
 <body>
@@ -16,8 +17,8 @@
   <nav class="sidebar txtr">
     <a href="#"><span class="material-symbols-outlined sidebar-icon icon-active" title="Home">home</span></a>
     <a href="callflow.html"><span class="material-symbols-outlined sidebar-icon" title="Call Flow">call</span></a>
-    <a href="scheduling.html"><span class="material-symbols-outlined sidebar-icon"
-        title="Scheduling">calendar_month</span></a>
+    <a href="essentials.html"><span class="material-symbols-outlined sidebar-icon" title="Essentials">home_repair_service</a>
+    <a href="scheduling.html"><span class="material-symbols-outlined sidebar-icon" title="Scheduling">calendar_month</span></a>
     <a href="billing.html"><span class="material-symbols-outlined sidebar-icon" title="Billing">receipt_long</span></a>
     <a href="services.html"><span class="material-symbols-outlined sidebar-icon" title="Services">build</span></a>
     <a href="prosupport.html"><span class="material-symbols-outlined sidebar-icon"
@@ -70,10 +71,10 @@
           </div>
         </div>
       </section>
-      <section class="dashboard-section">
-        <h2>⚡ Quick Actions</h2>
+      <section class="dashboard-section" id="essentials">
+        <div class="section-title txtr"><span class="material-symbols-outlined txtr">home_repair_service</span>Essentials</div>
         <div class="card-links">
-          <a href="#" class="card-btn"><span class="material-symbols-outlined card-icon">add</span> New Project</a>
+          <a href="notesform/index.html" target="_blank" class="card-btn"><span class="material-symbols-outlined card-icon">article</span>Notes Form</a>
           <a href="#" class="card-btn"><span class="material-symbols-outlined card-icon">folder</span> File Manager</a>
           <a href="#" class="card-btn"><span class="material-symbols-outlined card-icon">settings</span> Settings</a>
           <a href="#" class="card-btn"><span class="material-symbols-outlined card-icon">bar_chart</span> Analytics</a>
@@ -82,10 +83,13 @@
             View</a>
         </div>
       </section>
-      <section class="dashboard-section">
-        <h2>📝 Notes & Updates</h2>
-        <div class="notes-hint">Add your personal notes, reminders, changelog entries, or any other information you want
-          to keep track of. This is your space for quick notes and updates.</div>
+      <section class="dashboard-section" id="notes-updates">
+        <div class="section-title txtr"><span class="material-symbols-outlined txtr">breaking_news</span>Updates</div>
+        <div class="notes-hint">
+          <ul>
+            <li>Bait stations removals schedule now.</li>
+          </ul>
+        </div>
       </section>
     </main>
   </div>
