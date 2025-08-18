@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Date Picker Icon</title>
+  <style>
+    /* Hide the default date picker icon */
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      display: none;
+    }
+
+    /* Style the input field */
+    input[type="date"] {
+      position: relative;
+      padding: 10px;
+      padding-right: 40px; /* Add space for the custom icon */
+      font-size: 16px;
+    }
+
+    /* Add a custom icon */
+    input[type="date"]::after {
+      content: '\1F4C5'; /* Unicode for a calendar emoji */
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: #007BFF; /* Set the color of the icon */
+      pointer-events: none; /* Prevent interaction with the icon */
+    }
+  </style>
+</head>
+<body>
+  <label for="date">Select a date:</label>
+  <input type="date" id="date">
+</body>
+</html>
+Explanation:
+The ::-webkit-calendar-picker-indicator pseudo-element is hidden to remove the default icon.
+A custom icon (e.g., a Unicode emoji or an image) is added using the ::after pseudo-element.
+The color property sets the color of the custom icon.
+2. Using a Custom Date Picker Library
+For full control over the appearance and functionality of the date picker, you can use a JavaScript library like Flatpickr or Pikaday. These libraries allow you to completely replace the native date picker with a customizable one.
+
+Example with Flatpickr:
+
+
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Date Picker</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <style>
+    .flatpickr-input {
+      font-size: 16px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      .flatpickr-calendar {
+  font-size: 0.85em;
+  width: 220px;
+}
+.flatpickr-days {
+  padding: 2px;
+}
+.flatpickr-day {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 0.85em;
+}
+    }
+  </style>
+</head>
+<body>
+  <label for="date">Select a date:</label>
+  <input type="text" id="date" class="flatpickr-input">
+  
+  <script src="flatpickr.js"></script>
+  <script>
+    // Initialize Flatpickr
+    flatpickr("#date", {
+      dateFormat: "Y-m-d",
+      allowInput: true
+    });
+  </script>
+</body>
+</html>

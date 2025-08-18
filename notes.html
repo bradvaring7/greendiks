@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <title>Notes Form</title>
+
+  <style>
+
+    html { font-family: 'Segoe UI', sans-serif !important; }
+    html,body,h1,h2,h3,h4,h5,h6,p,img,ol,ul,li,form,table,tr,th,td { border: 0;border-collapse: collapse;border-spacing: 0;list-style: none;margin: 0;padding: 0}
+    body { background-color: #1e1e1e; margin: 0; color: white; padding-bottom: 5rem; }
+    h2 { font-size: 1.4rem; }h3 { font-size: 1.3rem; color: #00ff60; } h4 { font-size: 1.2rem; }h2,h3,h4 { font-weight: 400; line-height: 1; margin-bottom: .5rem; }input,textarea,h4,h5 { font: inherit;font-size: 100% }
+
+    .noteblock { max-width: 23rem !important;padding: .2rem 1rem .4rem 1rem !important; }
+
+    #callbtns,#cxnfobtns,#rsvcbtns,#urtbtns,#rglrbtns,#proleadbtns,#prosbtns,#notesbtns { padding: .2rem 1rem .3rem 1rem !important; text-align: right; }
+
+    hr { width: 24rem; text-align: left; margin: 0 0 .5rem .2rem; border: 1px solid #00ff60; }
+ 
+    textarea { margin: 0rem; font-family: 'Segou UI', sans-serif;padding: 0.5rem !important;color: white; }
+    textarea::placeholder { font-family: 'Segou UI', sans-serif;padding: 0.05rem;color: white;line-height: 1; }
+    textarea::placeholder,input::placeholder { color: rgb(145, 145, 145) }
+
+    input::placeholder { font-family: 'Segou UI', sans-serif;padding: 0;color: rgb(145, 145, 145);line-height: 1; }
+    input,textarea,select,select option { background-color: rgba(38, 0, 38, 0.212); }
+    input[type="date"] { color: rgb(145, 145, 145) !important; }
+
+    .input-row input { font-family: 'Segou UI', sans-serif;padding: 0.5rem;color: white; }
+    .input-row { display: flex;margin-bottom: .6rem;gap: .6rem;align-items: center;flex-wrap: wrap;min-width: 20rem; }
+    .input-row input,.input-row select,.input-row select option,textarea { border: 1px solid #7600d6f1;border-radius: 8px;box-shadow: inset 0 0 3px rgb(28, 0, 49);transition: border-color 0.3s, box-shadow 0.3s;background-color: #282828; }
+    .input-row input:focus,.input-row select:focus,.input-row textarea:focus { outline: none;box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.3); }
+
+    input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none;margin: 0; }input[type="number"] { -moz-appearance: textfield; }
+    
+    .input-row select { font-family: 'Segou UI', sans-serif;padding: 0.5rem;line-height: 1; font-size: 16px; }
+
+    #branch option:first-child { color: rgb(145, 145, 145) !important; }#follow:disabled option:first-child { color: rgb(145, 145, 145) !important; }
+
+    .input-row select:invalid,.input-row select option:disabled,.input-row select option[disabled],.input-row select option:first-child,.input-row select { color: rgb(145, 145, 145) !important; }
+
+    button { background-color: #19002d;color: white;font-weight: 600 !important;padding: 0.4rem 1rem;border: 1px solid #7600d6f1;border-radius: 8px;font-size: 1rem;cursor: pointer;transition: background-color 0.3s; }button:hover { background-color: #7600d6; }
+
+    #note { width: 22rem; }
+    /* Call Notes Field Widths*/ #who { width: 15rem; }#what1 { width: 22rem; }#resolv { width: 22rem; }#followup { width: 8rem; }
+    /* CX Info Field Widths   */ #acct { width: 8rem; }#phone { width: 10rem; }#appt { width: 7.4rem; } #branch { width: 11rem; } #wantdate { width: 12rem; }#wanttime { width: 8rem; }
+    /* Reservice and Regular Appt Field Widths */ #what2,#where,#when,#howmany,#reason,#context,#situation { width: 22rem; }
+    /* Unlock Request Field Widths */ #urtdate { width: 7.4rem; }#urtbranch { width: 11rem; }#urtname { width: 15rem; }
+    /* Pro Support Field widths */ #proscxacct { width: 8rem; }#proscxphone { width: 10rem; }#proscxname { width: 15rem; }#prosnotes { width: 22rem; }#prosbranch { width: 11rem; }
+    /* SP Lead Field Width */ #splterm { font-size: 0.9rem;width: 6.4rem; }#spltype { font-size: 0.9rem;width: 23rem; }#splinit { font-size: 0.9rem;width: 3.6rem; }#splpay { font-size: 0.9rem;width: 3.1rem; }#splpayfrq { font-size: 0.9rem; }
+
+    
+    .accordion { max-width: 24rem;margin: 1.2rem .5rem 1.2rem 1rem; }.accordion-header { cursor: pointer;color: #fff;display: flex;align-items: center;justify-content: space-between;margin-bottom: 0.2rem; }.accordion.open .accordion-header { padding: 0 0 .3rem 0; }.accordion-content { padding: .5rem .5rem;color: #ececec;display: none;line-height: 1.15;font-weight: 400 !important; }.accordion.open .accordion-content { font-weight: 500;display: block;display: flex;align-items: center;gap: 8px;border: 1px solid #7600d6f1;border-radius: 8px;box-shadow: inset 0 0 3px rgb(28, 0, 49);transition: border-color 0.3s,box-shadow 0.3s;background-color: #282828;padding: 0.5rem; }.accordion-header .material-symbols-outlined { margin-left: 12px; transition: transform 0.2s; color: #fff; }.accordion.open .accordion-header .material-symbols-outlined { transform: rotate(90deg); }
+
+    ul { display: block;list-style-type: none;margin-block-start: .2rem;margin-block-end: .8rem;padding-inline-start: .4rem;padding-inline-end: .4rem;unicode-bidi: isolate;line-height: 1.15;color: white; }li { padding: 0; line-height: 1.1; }em { color: #9c9c9c; }
+  
+  </style>
+
+</head>
+
+<body>
+
+  <hr>
+  <!-- #region Notes Section | id=notes_note, | ------------------------------------------------------------------------------->    
+  <section class="noteblock" id="notes">
+    <textarea id="note" names="note" placeholder="Brad! At least get the fucking notes type here. Type some damn notes already.">
+    </textarea>
+    <div id="notesbtns">
+      <button type="button" onclick="saveBlock('notes')">Save</button>
+      <button type="button" onclick="copyBlock('notes')">Copy</button>
+    </div>
+  </section>
+  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <!-- #region Call Notes Section | id=call_1:who;2:what1;3:resolv;4:follow | ------------------------------------------------->
+  <section class="noteblock" id="call"><h3>Call Notes</h3>
+    <div class="input-row" id="call1"><input type="text" id="who" name="who" placeholder="Name"></div>
+    <div class="input-row" id="call2"><textarea id="what1" name="what1" placeholder="What?"></textarea></div>
+    <div class="input-row" id="call3"><textarea id="resolv" name="resolv" placeholder="Resolution:"></textarea>
+    </div>
+    <div class="input-row" id="call4">
+      <select name="follow" id="follow">
+        <option value="" disabled selected>no</option>
+        <option value="yes">yes</option>
+        <option value="yes, callback">cb</option>
+        <option value="yes, email">email</option>
+        <option value="yes, sms">sms</option>
+        <option value="call w/ appt date">callappt</option>
+        <option value="text appt date">smsappt</option>
+      </select>
+      <label for="follow">Follow-up?</label>
+    </div>
+    <div class="accordion" id="calldispos">
+      <div class="accordion-header">
+        Call Dispositions<span class="material-symbols-outlined">chevron_right</span>
+      </div>
+      <div class="accordion-content">
+        <ul>
+          <li>BIL - Billing inquiry<ul><li><em>CX billing question.</em></li></ul></li>
+          <li>BIL - Collection Attempt<ul><li><em>CX called in response to collections.</em></li></ul></li>
+          <li>BIL - Enrolled in Auto-Pay<ul><li><em>Setup auto-pay with CX.</em></li></ul></li>
+          <li>BIL - Make Payment<ul><li><em>CX called to make a payment.</em></li></ul></li>
+          <li>BIL - Payment Method Update<ul><li><em>CX called to update/add card or bank.</em></li></ul></li>
+          <li>BIL - Refund Request<ul><li><em>CX requested a refund.</em></li></ul></li>
+          <li>Billing Notes<ul><li><em>Any billing changes or cx billing related requests not listed above.</em></li></ul></li>
+          <li>CE - Prince Increase<ul><li><em>CX called in RE: price increase.</em></li></ul></li>
+          <li>CE - Contract Inquiry<ul><li><em>CX inquring about contract details such as service frequency, length, etc.</em></li></ul></li>
+          <li>CE - Product Inquiry<ul><li><em>CX inquiring about products used.</em></li></ul></li>
+          <li>CE - Service Inquiry<ul><li><em>CX questins about servicds or request to add additional service.</em></li></ul></li>
+          <li>CE - Welcome Call<ul><li><em>CX call in w/ questions RE: Welcome Call completed or not complete.</em></li></ul></li>
+          <li>DIS - Customer Service<ul><li><em>CX dispute RE: their experience with CS.</em></li></ul></li>
+          <li>DIS - Legal/BBB/POA<ul><li><em>CX dispute threatening contact to BBB/Legal Team of any sort or POA.</em></li></ul></li>
+          <li>DIS - Service Pro<ul><li><em>CX dispute RE: experience with SP (Service Watchtower).</em></li></ul></li>
+          <li>OB - Alert Follow Up<ul><li><em>Outbound CX call following up on alert.</em></li></ul></li>
+          <li>OB - Customer Satisfaction Outbound<ul><li><em>Outbox CX call for feedback on their experience (CSAT).</em></li></ul></li>
+          <li>OB - Review Sent<ul><li><em>Outbound CX call sending a review.</em></li></ul></li>
+          <li>OB - Scheduling<ul><li><em>Outbound CX call for relating to scheduling/ticket followup.</em></li></ul></li>
+          <li>SCH - Cancel Apt<ul><li><em>CX cancelled appt.</em></li></ul></li>
+          <li>SCH - ETA<ul><li><em>CX want SP ETA for appt.</em></li></ul></li>
+          <li>SCH - Reschedule<ul><li><em>CX requests appt reschedule.</em></li></ul></li>
+          <li>SCH - Reservice/Inspection<ul><li><em>CX call in resulted in scheduling reservice/inspection or changing info on appt.</em></li></ul></li>
+          <li>SCH - Service Request<ul><li><em>CX requested treatment appt (Reservice, PC, RB, TFM, etc.)</em></li></ul></li>
+          <li>SCH - Tech NCNS<ul><li><em>CX called b/c SP did not show.</em></li></ul></li>
+          <li>Scheduling Notes<ul><li><em>Any scheduling related notes not listed above.</em></li></ul></li>
+          <li>Red Note<ul><li><em>Reminder/scheduling prefernces, do not send tech.</em></li></ul></li>
+          <li>Yellow Note<ul><li><em>SP instructions: knock upon arrival, take selfie, leave door tag, make sure (area) serviced, close gate, gate code, be thorough, do not service if CX not home, always interior, leave sticky traps, call prior to arrival.</em></li></ul></li>
+          <li>SP - Commission/Payroll Questions:<ul><li><em>SP asking about payroll or commission.</em></li></ul></li>
+          <li>SP - Contract Pricing Question<ul><li><em>SP questions about CX's contract.</em></li></ul></li>
+          <li>SP - Customer Inquiry Question<ul><li><em>SP questions about a CX they are servicing.</em></li></ul></li>
+          <li>SP - Escalation<ul><li><em>SP escalatation used for Sups only.</em></li></ul></li>
+          <li>SP - Planned Service Inquiry<ul><li><em>SP subscription changes or scheduling inquiries RE: a planned service: cancelling plan, scheduling station removal, scheduling next appt, etc.</em></li></ul></li>
+          <li>SP - Same Day Add<ul><li><em>SP add jobs to their routeor asks about previous add.</em></li></ul></li>
+          <li>SP - Scheduled Initial<ul><li><em>SP schedule Initial service appt.</em></li></ul></li>
+          <li>SP - Scheduling<ul><li><em>SP schedule appt that is not an Intial.</em></li></ul></li>
+          <li>SP - Service Question<ul><li><em>SP with general questions.</em></li></ul></li>
+          <li>SP - Upsell<ul><li><em>SP set up Lead for new subscription for existing CX.</em></li></ul></li>
+        </ul>
+      </div>
+    </div>
+    <div id="callbtns">
+      <button type="button" onclick="saveBlock('call')">Save</button>
+      <button type="butt
+      ikon" onclick="copyBlock('call')">Copy</button>
+    </div>
+  </section>
+  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <!-- #region CX Info Section | id=cxnfo_1:acct,phone;2:appt,branch;3:wantdate,wanttime;4:last,before ------------------------>
+  <section class="noteblock" id="cxnfo">
+    <h3>CX Info</h3>
+    <div class="input-row" id="cxnfo1">
+      <input type="number" name="acct" id="acct" placeholder="Acct" maxlength="8" min="1000" size="8rem" max="99999999">
+      <input type="tel" name="phone" id="phone" placeholder="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+    </div>
+    <div class="input-row" id="cxnfo2">
+      <select name="branch" id="branch">
+        <option value="" disabled selected>Branch</option>
+        <option value="Avon">Avon</option>
+        <option value="Bloomfield">Bloomfield</option>
+        <option value="Canton">Canton</option>
+        <option value="Cherry Hill">Cherry Hill</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Cincinnati">Cincinnati</option>
+        <option value="Cleveland">Cleveland</option>
+        <option value="Columbus">Columbus</option>
+        <option value="Dayton">Delaware</option>
+        <option value="Delaware">Delaware</option>
+        <option value="Des Moines">Des Moines</option>
+        <option value="Detroit">Detroit</option>
+        <option value="Fishers">Fishers</option>
+        <option value="Fort Wayne">Fort Wayne</option>
+        <option value="Grand Rapids">Grand Rapids</option>
+        <option value="Green Bay">Green Bay</option>
+        <option value="Hilliard">Hilliard</option>
+        <option value="Kalamazoo">Kalamazoo</option>
+        <option value="Kansas City">Kansas City</option>
+        <option value="Lansing">Lansing</option>
+        <option value="Lexington">Lexington</option>
+        <option value="Lansing">Lansing</option>
+        <option value="Louisville">Louisville</option>
+        <option value="Madison">Madison</option>
+        <option value="Milwaukee">Milwaukee</option>
+        <option value="Minneapolis">Minneapolis</option>
+        <option value="Munster">Munster</option>
+        <option value="Omaha">Omaha</option>
+        <option value="Philadelphia">Philadelphia</option>
+        <option value="Pittsburgh">Pittsburgh</option>
+        <option value="Princeton">Princeton</option>
+        <option value="Rove Massachusetts">Rove Massachusetts</option>
+        <option value="Rove Michigan">Rove Michigan</option>
+        <option value="Rove Minnesota">Rove Minnesota</option>
+        <option value="Rove Wisconsin">Rove Wisconsin</option>
+        <option value="Salt Lake City">Salt Lake City</option>
+        <option value="South Bend">South Bend</option>
+        <option value="Toledo">Toledo</option>
+        <option value="Willow Grove">Willow Grove</option>
+        <option value="York">York</option>
+      </select>
+      <input type="date" id="appt" name="appt" placeholder="mm/dd/yyyy">
+      <label for="date">Appt</label>
+    </div>
+    <div class="input-row" id="cxnfo3">
+      <input type="text" name="wantdate" id="wantdate" placeholder="Pref Date">
+      <input type="text" name="wanttime" id="wanttime" placeholder="Pref Time">
+    </div>
+    <div class="input-row" id="cxnfo4">
+      <label for="date">Last:</label>
+      <input type="date" id="last" name="last" placeholder="mm/dd/yyyy">
+    </div>
+    <div id="cxnfobtns">
+      <button type="button" onclick="saveBlock('cxinfo')">Save</button>
+      <button type="button" onclick="copyBlock('cxinfo')">Copy</button>
+    </div>
+  </section>
+  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <!-- #region Reservice Section | id=rsvc_1:what;2:where;3:when;4:howmany ---------------------------------------------------->
+  <div class="noteblock" id="rsvc">
+    <h3>Reservice</h3>
+    <div class="input-row" id="rsvc1">
+      <textarea id="what2" name="what2" placeholder="What?"></textarea>
+    </div>
+    <div class="input-row" id="rsvc2">
+      <input type="text" name="where" id="where" placeholder="Where?">
+    </div>
+    <div class="input-row" id="rsvc3">
+      <input type="text" name="when" id="when" placeholder="When?">
+    </div>
+    <div class="input-row" id="rsvc4">
+      <input type="text" name="howmany" id="howmany" placeholder="How Many?">
+    </div>
+    <div id="rsvcbtns">
+      <button type="button" onclick="saveBlock('rsvc')">Save</button>
+      <button type="button" onclick="copyBlock('rsvc')">Copy</button>
+    </div>
+  </div>
+  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <!-- #region Regular Appt Section | id=rglr 1:reason;2:Context;3:situation; ------------------------------------------------->
+  <div class="noteblock" id="rglr">
+    <h3>Regular Appt</h3>
+    <div class="input-row" id="rglr1">
+      <textarea id="reason" name="reason" rows="2" placeholder="Reason?"></textarea>
+    </div>
+    <div class="input-row" id="rglr2">
+      <textarea id="context" name="context" rows="2" placeholder="Context:"></textarea>
+    </div>
+    <div class="input-row" id="rglr3">
+      <textarea id="situation" name="situation" rows="2" placeholder="Pest Situation:"></textarea>
+    </div>
+    <div id="rglrbtns">
+      <button type="button" onclick="saveBlock('rglr')">Save</button>
+      <button type="button" onclick="copyBlock('rglr')">Copy</button>
+    </div>
+  </div>
+  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <!-- #region Unlock Route Request Section | id=urt_1:urtdate,urtbranch;2:urtname -------------------------------------------->
+  <div class="noteblock" id="urt">
+    <h3>Unlock Route Request</h3>
+    <div class="input-row">
+      <label for="date">Date</label>
+      <input type="date" id="urtdate" name="urtdate" placeholder="mm/dd/yyyy">
+      <select name="urtbranch" id="urtbranch">
+        <option value="" disabled selected>Branch</option>
+        <option value="Avon">Avon</option>
+        <option value="Bloomfield">Bloomfield</option>
+        <option value="Canton">Canton</option>
+        <option value="Cherry Hill">Cherry Hill</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Cincinnati">Cincinnati</option>
+        <option value="Cleveland">Cleveland</option>
+        <option value="Columbus">Columbus</option>
+        <option value="Dayton">Delaware</option>
+        <option value="Delaware">Delaware</option>
+        <option value="Des Moines">Des Moines</option>
+        <option value="Detroit">Detroit</option>
+        <option value="Fishers">Fishers</option>
+        <option value="Fort Wayne">Fort Wayne</option>
+        <option value="Grand Rapids">Grand Rapids</option>
+        <option value="Green Bay">Green Bay</option>
+        <option value="Hilliard">Hilliard</option>
+        <option value="Kalamazoo">Kalamazoo</option>
+        <option value="Kansas City">Kansas City</option>
+        <option value="Lansing">Lansing</option>
+        <option value="Lexington">Lexington</option>
+        <option value="Lansing">Lansing</option>
+        <option value="Louisville">Louisville</option>
+        <option value="Madison">Madison</option>
+        <option value="Milwaukee">Milwaukee</option>
+        <option value="Minneapolis">Minneapolis</option>
+        <option value="Munster">Munster</option>
+        <option value="Omaha">Omaha</option>
+        <option value="Philadelphia">Philadelphia</option>
+        <option value="Pittsburgh">Pittsburgh</option>
+        <option value="Princeton">Princeton</option>
+        <option value="Rove Massachusetts">Rove Massachusetts</option>
+        <option value="Rove Michigan">Rove Michigan</option>
+        <option value="Rove Minnesota">Rove Minnesota</option>
+        <option value="Rove Wisconsin">Rove Wisconsin</option>
+        <option value="Salt Lake City">Salt Lake City</option>
+        <option value="South Bend">South Bend</option>
+        <option value="Toledo">Toledo</option>
+        <option value="Willow Grove">Willow Grove</option>
+        <option value="York">York</option>
+      </select>
+    </div>
+    <div class="input-row">
+      <input type="text" id="urtname" name="urtname" rows="1" placeholder="Route Name">
+    </div>
+    <div id="urtbtns">
+      <button type="button" onclick="saveBlock('urt')">Save</button>
+      <button type="button" onclick="copyBlock('urt')">Copy</button>
+    </div>
+  </div>
+  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <!-- #region Pro Support Section | id=pros_pro:servicepro,1:proscxacct,proscxphone;2:proscxname;3:prosnotes;4:prosbranch ---->
+  <div class="noteblock" id="pros">
+    <h3>Pro Support</h3>
+    <div class="input-row" id="pro"><input type="text" id="servicepro" name="servicepro" placeholder="Name"></div>
+    <div class="input-row" id="pros1">
+      <input type="number" name="proscxacct" id="proscxacct" placeholder="CX Acct" maxlength="8" min="1000" size="8rem" max="99999999">
+      <input type="tel" name="proscxphone" id="proscxphone" placeholder="CX Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+    </div>
+    <div class="input-row" id="pros2">
+      <input type="text" name="proscxname" id="proscxname" placeholder="CX Name">
+    </div>
+    <div class="input-row" id="pros3">
+      <textarea id="prosnotes" name="prosnotes" placeholder="Pro Support Notes"></textarea>
+    </div>
+    <div class="input-row" id="pros4">
+      <select name="prosbranch" id="prosbranch">
+        <option value="" disabled selected>Branch</option>
+        <option value="Avon">Avon</option>
+        <option value="Bloomfield">Bloomfield</option>
+        <option value="Canton">Canton</option>
+        <option value="Cherry Hill">Cherry Hill</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Cincinnati">Cincinnati</option>
+        <option value="Cleveland">Cleveland</option>
+        <option value="Columbus">Columbus</option>
+        <option value="Dayton">Delaware</option>
+        <option value="Delaware">Delaware</option>
+        <option value="Des Moines">Des Moines</option>
+        <option value="Detroit">Detroit</option>
+        <option value="Fishers">Fishers</option>
+        <option value="Fort Wayne">Fort Wayne</option>
+        <option value="Grand Rapids">Grand Rapids</option>
+        <option value="Green Bay">Green Bay</option>
+        <option value="Hilliard">Hilliard</option>
+        <option value="Kalamazoo">Kalamazoo</option>
+        <option value="Kansas City">Kansas City</option>
+        <option value="Lansing">Lansing</option>
+        <option value="Lexington">Lexington</option>
+        <option value="Lansing">Lansing</option>
+        <option value="Louisville">Louisville</option>
+        <option value="Madison">Madison</option>
+        <option value="Milwaukee">Milwaukee</option>
+        <option value="Minneapolis">Minneapolis</option>
+        <option value="Munster">Munster</option>
+        <option value="Omaha">Omaha</option>
+        <option value="Philadelphia">Philadelphia</option>
+        <option value="Pittsburgh">Pittsburgh</option>
+        <option value="Princeton">Princeton</option>
+        <option value="Rove Massachusetts">Rove Massachusetts</option>
+        <option value="Rove Michigan">Rove Michigan</option>
+        <option value="Rove Minnesota">Rove Minnesota</option>
+        <option value="Rove Wisconsin">Rove Wisconsin</option>
+        <option value="Salt Lake City">Salt Lake City</option>
+        <option value="South Bend">South Bend</option>
+        <option value="Toledo">Toledo</option>
+        <option value="Willow Grove">Willow Grove</option>
+        <option value="York">York</option>
+      </select>
+    </div>
+    <div id="prosbtns">
+      <button type="button" onclick="saveBlock('pros')">Save</button>
+      <button type="button" onclick="copyBlock('pros')">Copy</button>
+    </div>
+  </div>
+  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  <hr>
+  <!-- #region SP Lead Section | id=splead_1:spltype -------------------------------------------------------------------------->
+  <div class="noteblock" id="splead">
+    <h3>Service Pro Lead Setup</h3>
+    <div class="input-row" id="splead1">
+      <select name="spltype" id="spltype">
+        <option value="" disabled selected>Select Service</option>
+        <option value="Bed Bug Inspection">Bed Bug Inspection</option>
+        <option value="Bed Bug Reduction">Bed Bug Reduction</option>
+        <option value="Bed Bug Reduction Initial">Bed Bug Reduction Initial</option>
+        <option value="Cancellation Charge">Cancellation Charge</option>
+        <option value="Carpenter Bee Plan">Carpenter Bee Plan</option>
+        <option value="Carpenter Bee Plan Initial">Carpenter Bee Plan Initial</option>
+        <option value="Cross Sale Subscription Trigger">Cross Sale Subscription Trigger</option>
+        <option value="Exclusion">Exclusion</option>
+        <option value="Flea Tick Interior Reduction">Flea Tick Interior Reduction</option>
+        <option value="German Roach Plan">German Roach Plan</option>
+        <option value="German Roach Plan Initial">German Roach Plan Initial</option>
+        <option value="GreenGuard Basic Initial PC">GreenGuard Basic Initial PC</option>
+        <option value="GreenGuard Basic Subscription PC">GreenGuard Basic Subscription PC</option>
+        <option value="GreenGuard Commercial Initial">GreenGuard Commercial Initial</option>
+        <option value="GreenGuard Commercial Service">GreenGuard Commercial Service</option>
+        <option value="GreenGuard Essential Initial PC/RB/TFMX4">GreenGuard Essential Initial PC/RB/TFMX4</option>
+        <option value="GreenGuard Essential Subscription PC/RB/TFMX4">GreenGuard Essential Subscription PC/RB/TFMX4</option>
+        <option value="GreenGuard Premier Initial PC/RB/TFMX7">GreenGuard Premier Initial PC/RB/TFMX7</option>
+        <option value="GreenGuard Premier Subscription PC/RB/TFMX7">GreenGuard Premier Subscription PC/RB/TFMX7</option>
+        <option value="GreenGuard Select Initial PC/RB">GreenGuard Select Initial PC/RB</option>
+        <option value="GreenGuard Select Initial PC/TFMX4">GreenGuard Select Initial PC/TFMX4</option>
+        <option value="GreenGuard Select Initial PC/TFMX7">GreenGuard Select Initial PC/TFMX7</option>
+        <option value="GreenGuard Select Initial RB/TFM">GreenGuard Select Initial RB/TFM</option>
+        <option value="GreenGuard Select RB/TFM">GreenGuard Select RB/TFM</option>
+        <option value="GreenGuard Select Subscription PC/RB">GreenGuard Select Subscription PC/RB</option>
+        <option value="GreenGuard Select Subscription PC/TFMX4">GreenGuard Select Subscription PC/TFMX4</option>
+        <option value="GreenGuard Select Subscription PC/TFMX7">GreenGuard Select Subscription PC/TFMX7</option>
+        <option value="IMPORT ADJUSTMENT">IMPORT ADJUSTMENT</option>
+        <option value="Inspection">Inspection</option>
+        <option value="Interior Rodent Plan">Interior Rodent Plan</option>
+        <option value="Interior Rodent Plan Initial">Interior Rodent Plan Initial</option>
+        <option value="Mole Barrier Plan">Mole Barrier Plan</option>
+        <option value="Mole Barrier Plan Initial">Mole Barrier Plan Initial</option>
+        <option value="Mosquito Reduction">Mosquito Reduction</option>
+        <option value="Mosquito Reduction Initial">Mosquito Reduction Initial</option>
+        <option value="One Time Exterior Pest Control">One Time Exterior Pest Control</option>
+        <option value="One Time Mosquito Reduction">One Time Mosquito Reduction</option>
+        <option value="Pest and Rodent Defense">Pest and Rodent Defense</option>
+        <option value="Pest and Rodent Defense Initial">Pest and Rodent Defense Initial</option>
+        <option value="Pest Control">Pest Control</option>
+        <option value="Pest Control Initial">Pest Control Initial</option>
+        <option value="Reservice - Ants">Reservice - Ants</option>
+        <option value="Reservice - Carpenter Bees">Reservice - Carpenter Bees</option>
+        <option value="Reservice - Clover Mites">Reservice - Clover Mites</option>
+        <option value="Reservice - German Roach Plan">Reservice - German Roach Plan</option>
+        <option value="Reservice - Interior">Reservice - Interior</option>
+        <option value="Reservice - Interior Rodent Plan">Reservice - Interior Rodent Plan</option>
+        <option value="Reservice - Missed Step">Reservice - Missed Step</option>
+        <option value="Reservice - Mosquito">Reservice - Mosquito</option>
+        <option value="Reservice - Multiple">Reservice - Multiple</option>
+        <option value="Reservice - Rodent">Reservice - Rodent</option>
+        <option value="Reservice - Spiders">Reservice - Spiders</option>
+        <option value="Reservice - Wasps/Hornets">Reservice - Wasps/Hornets</option>
+        <option value="Rodent Baiting Initial">Rodent Baiting Initial</option>
+        <option value="Rodent Baiting Subscription">Rodent Baiting Subscription</option>
+        <option value="Station Removal">Station Removal</option>
+        <option value="Termite Defense Inspection Only">Termite Defense Inspection Only</option>
+        <option value="Termite Defense Install">Termite Defense Install</option>
+        <option value="Termite Defense Subscription">Termite Defense Subscription</option>
+        <option value="Tick Flea and Mosquito">Tick Flea and Mosquito</option>
+        <option value="Tick Flea and Mosquito Initial">Tick Flea and Mosquito Initial</option>
+        <option value="VIP Treatment">VIP Treatment</option>
+      </select>
+      <select name="splterm" id="splterm">
+        <option value="" disabled selected>Length</option>
+        <option value="0">No Contract</option>
+        <option value="12">12 Months</option>
+        <option value="18">18 Months</option>
+        <option value="24">24 Months</option>
+        <option value="30">30 Months</option>
+        <option value="36">36 Months</option>
+        <option value="42">42 Months</option>
+        <option value="48">48 Months</option>
+        <option value="54">54 Months</option>
+        <option value="60">60 Months</option>
+        <option value="66">66 Months</option>
+      </select>
+      <input type="number" name="splinit" id="splinit" placeholder="0000.00" min="0" step="0.01">
+      <input type="number" name="splpay" id="splpay" placeholder="000.00" min="0" step="0.01">
+      <select name="splpayfrq" id="splpayfrq">
+        <option value="After Each Completed Service">Aftr</option>
+        <option value="Monthly Billing">Mnth</option>
+        <option value="Quarterly Billing">Qrtr</option>
+        <option value="Custom Billing">Othr</option>
+      </select>
+    <div id="splbtns">
+      <button type="button" onclick="saveBlock('splead')">Save</button>
+      <button type="button" onclick="copyBlock('splead')">Copy</button>
+    </div>
+  </div>
+  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  <hr>
+  
+  <script>
+
+  const blockFields = {
+  notes: ['note'],
+  call: ['who', 'what1', 'resolv', 'follow'],
+  cxnfo: ['acct', 'phone', 'appt', 'branch', 'wantdate', 'wanttime', 'last'],
+  rsvc: ['what2', 'where', 'when', 'howmany'],
+  rglr: ['reason', 'context', 'situation'],
+  urt: ['urtdate', 'urtbranch', 'urtname'],
+  pros: ['servicepro', 'proscxacct', 'proscxphone', 'proscxname', 'prosnotes', 'prosbranch'],
+  splead: ['spltype', 'splterm', 'splinit', 'splpay', 'splpayfrq']
+  };
+
+    // Load and auto-save for each noteblock
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.noteblock').forEach(block => {
+        const blockId = block.id;
+        fields.forEach(field => {
+          const el = block.querySelector(`#${field}`);
+          if (!el) return;
+
+          // Load saved value
+          const saved = localStorage.getItem(`${blockId}-${field}`);
+          if (saved) el.value = saved;
+
+          // Auto-save on input
+          el.addEventListener('input', () => {
+            localStorage.setItem(`${blockId}-${field}`, el.value);
+          });
+        });
+      });
+    });
+
+    // Manual save
+    function saveBlock(blockId) {
+      const block = document.getElementById(blockId);
+      fields.forEach(field => {
+        const el = block.querySelector(`#${field}`);
+        if (el) localStorage.setItem(`${blockId}-${field}`, el.value);
+      });
+      alert(`Saved: ${blockId}`);
+    }
+
+    // Copy to clipboard
+    function copyBlock(blockId) {
+      const block = document.getElementById(blockId);
+      const text = fields.map(field => {
+        const label = block.querySelector(`label[for="${field}"]`)?.innerText || field;
+        const value = block.querySelector(`#${field}`)?.value || '';
+        return `${label} ${value}`;
+      }).join('\n\n');
+      navigator.clipboard.writeText(text).then(() => {
+        alert(`Copied: ${blockId}`);
+      });
+    }
+
+
+    async function copyCXInfo() {
+      try {
+        const acct = document.getElementById("acct")
+        const phone = document.getElementById("phone");
+        const appt = document.getElementById("appt");
+        const branch = document.getElementById("branch");
+        const wantdate = document.getElementById("wantdate");
+        const wanttime = document.getElementById("wanttime");
+
+        if (!acct || !phone || !appt || !branch || !wantdate || !wanttime) throw new Error("Missing CX Info inputs.");
+
+        const text =
+          `CX- ${acct.value}\n` +
+          `Phone: ${phone.value}\n` +
+          `Appt Date: ${appt.value}\n` +
+          `Branch: ${branch.value}\n` +
+          `Preferred Date: ${wantdate.value}\n` +
+          `Preferred Time: ${wanttime.value}\n`;
+
+        await navigator.clipboard.writeText(text);
+        alert("CX Info Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy notes. Please check form elements and clipboard permissions.");
+      }
+    }
+
+
+    async function copyAfterCall() {
+      try {
+        const who = document.getElementById("who");
+        const what = document.getElementById("what");
+        const resolution = document.getElementById("resolution");
+        const followup = document.getElementById("followup");
+
+        if (!who || !what || !resolution || !followup) throw new Error("Missing After Call inputs.");
+
+        const text =
+          `Who? ${who.value}\n` +
+          `What? ${what.value}\n` +
+          `Resolution: ${resolution.value}\n` +
+          `Follow-up?: ${followup.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("📞 After Call Notes Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy notes. Please check form elements and clipboard permissions.");
+      }
+    }
+
+    async function copyReservice() {
+      try {
+        const what = document.getElementById("res_what");
+        const where = document.getElementById("res_where");
+        const when = document.getElementById("res_when");
+        const howmany = document.getElementById("res_howmany");
+
+        if (!what || !where || !when || !howmany) throw new Error("Missing Reservice inputs.");
+
+        const text =
+          `What? ${what.value}\n` +
+          `Where? ${where.value}\n` +
+          `When? ${when.value}\n` +
+          `How Many? ${howmany.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("🔧 Reservice Appointment Notes Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy reservice notes. Please check form elements and clipboard permissions.");
+      }
+    }
+
+    async function copyRegular() {
+      try {
+        const reason = document.getElementById("reason");
+        const context = document.getElementById("context");
+        const situation = document.getElementById("situation");
+
+        if (!reason || !context || !situation) throw new Error("Missing Regular Appointment inputs.");
+
+        const text =
+          `Reason? ${reason.value}\n` +
+          `Context: ${context.value}\n` +
+          `Pest Situation: ${situation.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("📆 Regular Appointment Notes Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy appointment notes. Please check form elements and clipboard permissions.");
+      }
+    }
+
+    async function copyUnlockRoute() {
+      try {
+        const branch = document.getElementById("rtbranch");
+        const date = document.getElementById("rtdate");
+        const routename = document.getElementById("rtname");
+
+        if (!branch || !date || !routename) throw new Error("Missing Unlock Route Request inputs.");
+
+        const text =
+          `Branch: ${branch.value}\n` +
+          `Date: ${date.value}\n` +
+          `Route Name: ${routename.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("📆 Unlock Route Request Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy Unlock Route Request. Please check form elements and clipboard permissions.");
+      }
+    }
+
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', function () {
+        const accordion = this.parentElement;
+        accordion.classList.toggle('open');
+      });
+    });
+  </script>
+
+</body>
+
+</html>

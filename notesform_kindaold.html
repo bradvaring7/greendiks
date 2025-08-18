@@ -10,7 +10,7 @@
       font-family: Arial, sans-serif;
       padding: 0;
       background-color: #00a000;
-      color: rgb(133, 133, 133);
+      color: #cbcbcb;
       line-height: 1.5em;
     }
     h3 {
@@ -58,19 +58,22 @@
       padding-top: 14px;
       margin: 10px 0 6px 0;
       border: 2px double #5b73bb;
-      max-width: 400px;
-      min-width: 200px !important;
-      color: rgb(133, 133, 133) !important;
+      max-width: 18rem;
+      min-width: 18rem !important;
+      color: #fff;
       box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.8), 0 1.5px 6px rgba(0, 0, 0, 0.22);
     }
 
     button {
-      background-color: #36301c00;
+      background-color: #1e1c16;
+      border: 1px solid #00ff60 !important;
+      border-radius: 5px;
       color: rgb(255, 255, 255);
-      padding: .25rem;
+      padding: 0px 4px 3px 4px;
       cursor: pointer;
       margin-top: 10px;
-      border: none;
+      font-size: 1.35rem;
+      box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.8), 0 1.5px 6px rgba(0, 0, 0, 0.22);
     }
 
     .input-row {
@@ -105,7 +108,7 @@
 
     label {
       font-size: 1.1rem;
-      color: #cbcbcb;
+      color: #fff;
     }
 
     #scheduled {
@@ -123,13 +126,13 @@
 
     /* Hide the default checkbox */
     input[type="checkbox"] {
-      appearance: none;
+      
       /* Removes default styling */
       -webkit-appearance: none;
       /* For Safari */
       width: 1.8rem;
       height: 1.8rem;
-
+      appearance: none;
       margin: 0;
       cursor: pointer;
       font-size: 1rem;
@@ -166,20 +169,18 @@
 
 <body>
   <!-- CX Info -->
-  <div class="noteblock" id="cxinfo z-index-2">
+  <div class="noteblock" id="CXInfo">
     <h3 style="padding-bottom: 0.4rem;">CX Info</h3>
     <div class="input-row">
-      <input type="number" name="acct" id="acct" placeholder="Acct" maxlength="8" min="1000" size="8rem" max="99999999" inputmode="numeric" class="z-index-0">
-      <input type="tel" name="phone" id="phone" placeholder="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-        inputmode="numeric">
+      <input type="number" name="acct" id="acct" placeholder="Acct" maxlength="8" min="1000" size="8rem" max="99999999">
+      <input type="tel" name="phone" id="phone" placeholder="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
     </div>
     <div class="input-row">
-      <label for="date">ApptDate:</label>
-      <input type="date" name="apptdate" id="date" placeholder="Appt Date">
-      <input type="checkbox" name="scheduled" id="scheduled" value="Scheduled✔️">
+      <label for="date">Appt:</label>
+      <input type="date" name="appt" id="appt">
     </div>
     <div class="input-row">
-      <select name="branch" id="branch" placeholder="Select Branch">
+      <select name="branch" id="branch">
         <option value=" ">Select Branch</option>
         <option value="Avon">Avon</option>
         <option value="Bloomfield">Bloomfield</option>
@@ -224,14 +225,21 @@
       </select>
     </div>
     <div class="input-row">
-      <input type="text" name="wantdate" id="wantdate" placeholder="Preferred Date" maxlength="9" inputmode="numeric">
-      <input type="tel" name="wanttime" id="wanttime" placeholder="Preferred Time" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-        inputmode="numeric">
+      <input type="text" name="wantdate" id="wantdate" placeholder="Pref Date">
+      <input type="text" name="wanttime" id="wanttime" placeholder="Pref Time">
     </div>
-    <button onclick="copyCXInfo()">
-      <img src="assets/copy.png">
-    </button>
+    <div class="input-row">
+      <button type="button" onclick="saveBlock('noteblock-1')">Save</button>
+      <button type="button" onclick="copyBlock('noteblock-1')">Copy</button>
+    </div>
+    <div class="input-row">
+      <button onclick="copyCXInfo()">
+        Copy
+      </button>
+    </div>
   </div>
+
+
   <!-- After Call Section -->
   <div class="noteblock" id="aftercall">
     <h4>After Call Notes</h4>
@@ -240,6 +248,10 @@
     <textarea id="resolution" rows="2" placeholder="Resolution:"></textarea>
     <input type="text" id="followup" placeholder="Follow-up?">
     <button onclick="copyAfterCall()">🆗</button>
+    <div class="input-row">
+      <button type="button" onclick="saveBlock('noteblock-1')">Save</button>
+      <button type="button" onclick="copyBlock('noteblock-1')">Copy</button>
+    </div>
   </div>
   <!-- Reservice Appointment Section -->
   <div class="noteblock" id="reservice">
@@ -270,18 +282,22 @@
   <script>
     async function copyCXInfo() {
       try {
-        const acct = document.getElementById("acct");
+        const acct = document.getElementById("acct")
         const phone = document.getElementById("phone");
+        const appt = document.getElementById("appt");
         const branch = document.getElementById("branch");
-        const apptdate = document.getElementById("apptdate");
+        const wantdate = document.getElementById("wantdate");
+        const wanttime = document.getElementById("wanttime");
 
-        if (!acct || !phone || !branch || !apptdate) throw new Error("Missing CX Info inputs.");
+        if (!acct || !phone || !appt || !branch || !wantdate || !wanttime) throw new Error("Missing CX Info inputs.");
 
         const text =
           `CX- ${acct.value}\n` +
           `Phone: ${phone.value}\n` +
+          `Appt Date: ${appt.value}\n` +
           `Branch: ${branch.value}\n` +
-          `ApptDate: ${apptdate.value}\n`;
+          `Preferred Date: ${wantdate.value}\n` +
+          `Preferred Time: ${wanttime.value}\n`;
 
         await navigator.clipboard.writeText(text);
         alert("CX Info Copied!");
