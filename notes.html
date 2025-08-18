@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,81 +7,62 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <title>Notes Form</title>
-
   <style>
-
     html { font-family: 'Segoe UI', sans-serif !important; }
     html,body,h1,h2,h3,h4,h5,h6,p,img,ol,ul,li,form,table,tr,th,td { border: 0;border-collapse: collapse;border-spacing: 0;list-style: none;margin: 0;padding: 0}
-    body { background-color: #1e1e1e; margin: 0; color: white; padding-bottom: 5rem; }
+    body { background-color: #1e1e1e; margin: 0; color: #fff; padding-bottom: 5rem; }
     h2 { font-size: 1.4rem; }h3 { font-size: 1.3rem; color: #00ff60; } h4 { font-size: 1.2rem; }h2,h3,h4 { font-weight: 400; line-height: 1; margin-bottom: .5rem; }input,textarea,h4,h5 { font: inherit;font-size: 100% }
-
-    .noteblock { max-width: 22.5rem !important;padding: .2rem 1rem .4rem .5rem !important; }
-
+    .noteblock { max-width: 22.1rem !important;padding: .2rem .8rem .4rem .8rem !important; }
     #callbtns,#cxnfobtns,#rsvcbtns,#urtbtns,#rglrbtns,#proleadbtns,#prosbtns,#notesbtns,#splbtns { padding: .2rem .5rem .3rem 0 !important; text-align: left; }
-
-    hr { width: 23.5rem; text-align: left; margin: 0 0 .3rem .2rem; border: 1px solid #00ff627c; }
- 
-    textarea { margin: 0rem; font-family: 'Segou UI', sans-serif;padding: 0.5rem !important;color: white; }
-    textarea::placeholder { font-family: 'Segou UI', sans-serif;padding: 0.05rem;color: white;line-height: 1; }
+    hr { width: 23.5rem; text-align: left; margin: 0 0 .3rem .2rem; border: 1px solid #00ff624a; }
+    textarea { margin: 0rem; font-family: 'Segou UI', sans-serif;padding: 0.5rem !important;color: #fff; }
+    textarea::placeholder { font-family: 'Segou UI', sans-serif;padding: 0.05rem;line-height: 1; }
     textarea::placeholder,input::placeholder { color: rgb(145, 145, 145) }
-
     input::placeholder { font-family: 'Segou UI', sans-serif;padding: 0;color: rgb(145, 145, 145);line-height: 1; }
-    input,textarea,select,select option { background-color: rgba(38, 0, 38, 0.212); }
+    input,textarea,select,select option { background-color: rgba(38, 0, 38, 0.1); }
     input[type="date"] { color: rgb(145, 145, 145) !important; }
-
-    .input-row input { font-family: 'Segou UI', sans-serif;padding: 0.5rem;color: white; }
+    .input-row input { font-family: 'Segou UI', sans-serif;padding: 0.5rem;color: #fff; }
     .input-row { display: flex;margin-bottom: .6rem;gap: .6rem;align-items: center;flex-wrap: wrap;min-width: 20rem; }
-    .input-row input,.input-row select,.input-row select option,textarea { border: 1px solid #7600d6f1;border-radius: 8px;box-shadow: inset 0 0 3px rgb(28, 0, 49);transition: border-color 0.3s, box-shadow 0.3s;background-color: #282828; }
-    .input-row input:focus,.input-row select:focus,.input-row textarea:focus { outline: none;box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.3); }
-
+    .input-row input,.input-row select,.input-row select option,textarea { border: 1px solid #7600d6f1;border-radius: 8px;box-shadow: inset 0 0 3px rgb(28, 0, 49);transition: border-color 0.6s, box-shadow .6s;background-color: #242424; }
+    .input-row input:focus,.input-row select:focus,.input-row textarea:focus { outline: none;box-shadow: 0 0 0 1px #00ff6297; }
     input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none;margin: 0; }input[type="number"] { -moz-appearance: textfield; }
-    
     .input-row select { font-family: 'Segou UI', sans-serif;padding: 0.5rem;line-height: 1; font-size: 16px; }
-
     #branch option:first-child { color: rgb(145, 145, 145) !important; }#follow:disabled option:first-child { color: rgb(145, 145, 145) !important; }
-
     .input-row select:invalid,.input-row select option:disabled,.input-row select option[disabled],.input-row select option:first-child,.input-row select { color: rgb(145, 145, 145) !important; }
-
-    button { background-color: #19002d;color: white;font-weight: 400 !important;padding: 0.4rem 1rem;border: 1px solid #00ff6279;border-radius: 8px;font-size: 1rem;cursor: pointer;transition: background-color 0.3s; }button:hover,button:active { background-color: #6100b1;border: 1px solid #00ff60; }
-
-    #note { width: 20rem; }
-    /* Call Notes Field Widths*/ #who { width: 15rem; }#what1 { width: 22rem; }#resolv { width: 22rem; }#followup { width: 8rem; }
-    /* CX Info Field Widths   */ #acct { width: 8rem; }#phone { width: 10rem; }#appt { width: 7.4rem; } #branch { width: 11rem; } #wantdate { width: 12rem; }#wanttime { width: 7rem; }
+    button { background-color: #19002d;color: #fff;font-weight: 400 !important;padding: 0.2rem .8rem;border: 1px solid #00ff6279;border-radius: 8px;font-size: .8rem;cursor: pointer;transition: background-color 0.3s; }button:hover,button:active { background-color: #6100b1;border: 1px solid #00ff60 }
+    label { font-size: 1rem; }
+    #note { width: 22rem; }
+    /* Call Notes Field Widths*/ #who { width: 12rem; }#what1 { width: 22rem; }#resolv { width: 22rem; }#followup { width: 8rem; }
+    /* CX Info Field Widths   */ #acct { width: 7.75rem; }#phone { width: 6.6rem; }#cxbranch { width: 10.7rem; }#appt { width: 7.7rem; } #branch { width: 11rem; } #wantdate { width: 12.25rem; }#wanttime { width: 7rem; }#last { width: 7.65rem; }#befo { width: 7.65rem; }
     /* Reservice and Regular Appt Field Widths */ #what2,#where,#when,#howmany,#reason,#context,#situation { width: 22rem; }
-    /* Unlock Request Field Widths */ #urtdate { width: 7.4rem; }#urtbranch { width: 11rem; }#urtname { width: 15rem; }
-    /* Pro Support Field widths */ #proscxacct { width: 8rem; }#proscxphone { width: 10rem; }#proscxname { width: 15rem; }#prosnotes { width: 22rem; }#prosbranch { width: 11rem; }
-    /* SP Lead Field Width */ #splterm { font-size: 0.9rem;width: 6.4rem; }#spltype { font-size: 0.9rem;width: 23rem; }#splinit { font-size: 0.9rem;width: 3.6rem; }#splpay { font-size: 0.9rem;width: 3.1rem; }#splpayfrq { font-size: 0.9rem; }
-
-    
-    .accordion { max-width: 24rem;margin: 1.2rem .5rem 1.2rem 1rem; }.accordion-header { cursor: pointer;color: #fff;display: flex;align-items: center;justify-content: space-between;margin-bottom: 0.2rem; }.accordion.open .accordion-header { padding: 0 0 .3rem 0; }.accordion-content { padding: .5rem .5rem;color: #ececec;display: none;line-height: 1.15;font-weight: 400 !important; }.accordion.open .accordion-content { font-weight: 500;display: block;display: flex;align-items: center;gap: 8px;border: 1px solid #7600d6f1;border-radius: 8px;box-shadow: inset 0 0 3px rgb(28, 0, 49);transition: border-color 0.3s,box-shadow 0.3s;background-color: #282828;padding: 0.5rem; }.accordion-header .material-symbols-outlined { margin-left: 12px; transition: transform 0.2s; color: #fff; }.accordion.open .accordion-header .material-symbols-outlined { transform: rotate(90deg); }
-
+    /* Unlock Route Request Field Widths */ #urtdate { width: 7.4rem; }#urtbranch { width: 15rem; }#urtname { width: 13.9rem; }#urttab { width: 14rem; }
+    /* Pro Support Field widths */ #spro { width: 15rem; }#proscxacct { width: 8rem; }#proscxphone { width: 10rem; }#proscxname { width: 15rem; }#prosnotes { width: 19.7rem; }#prosbranch { width: 16.2rem; }#term { font-size: 0.9rem;width: 6.4rem; }#type { font-size: 0.9rem;width: 23rem; }#init { font-size: 0.9rem;width: 3.6rem; }#pay { font-size: 0.9rem;width: 3.1rem; }#pfrq { font-size: 0.9rem; }
+    .accordion { max-width: 24rem;margin: 0rem .5rem .5rem 1rem; }.accordion-header { width: 8.5rem; cursor: pointer;color: #fff;display: flex;align-items: center;justify-content: space-between;margin-bottom: 0.2rem; }.accordion.open .accordion-header { padding: 0 0 .3rem 0; }.accordion-content { padding: .5rem .5rem;color: #ececec;display: none;line-height: 1.15;font-weight: 400 !important; }.accordion.open .accordion-content { font-size: .8rem;font-weight: 500;display: block;display: flex;align-items: center;gap: 8px;border: 1px solid #7600d6f1;border-radius: 8px;box-shadow: inset 0 0 3px rgb(28, 0, 49);transition: border-color 0.3s,box-shadow 0.3s;background-color: #282828;padding: 0.5rem; }.accordion-header .material-symbols-outlined { font-size: 1rem; margin: 0; padding: 0; transition: transform 0.2s; color: #fff; }.accordion.open .accordion-header .material-symbols-outlined { transform: rotate(90deg); }
     ul { display: block;list-style-type: none;margin-block-start: .2rem;margin-block-end: .8rem;padding-inline-start: .4rem;padding-inline-end: .4rem;unicode-bidi: isolate;line-height: 1.15;color: white; }li { padding: 0; line-height: 1.1; }em { color: #9c9c9c; }
-  
   </style>
-
 </head>
-
 <body>
-
   <hr>
-  <!-- #region Notes Section | id=notes_note, | ------------------------------------------------------------------------------->    
+  <!-- #region Notes Section | div id=notes_:note  ----------------------------------------------------------------------------->
   <section class="noteblock" id="notes">
-    <textarea id="note" names="note" placeholder="Brad! At least get the fucking notes type here. Type some damn notes already.">
-    </textarea>
-    <div id="notesbtns">
-      <button type="button" onclick="saveBlock('notes')">Save</button>
-      <button type="button" onclick="copyBlock('notes')">Copy</button>
+    <div class="input-row" id="notes1">
+      <textarea id="note" name="note" placeholder="Brad, start typing some notes already! Don't wait until this call is over!">
+      </textarea>
     </div>
+  <div id="notesbtns">
+    <button onclick="saveBlock('notes', ['note'])">Save</button>
+    <button onclick="copyBlock('notes')">Copy</button>
+    <button onclick="downloadOutput('notes')">Download</button>
+    <button onclick="printOutput('notes')">Print</button>
+    <button onclick="resetBlock('notes', ['note'])">Reset</button>
+  </div>
   </section>
-  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  <!-- #endregion -------------------------------------------------------------------------------------------------------------->
   <hr>
-  <!-- #region Call Notes Section | id=call_1:who;2:what1;3:resolv;4:follow | ------------------------------------------------->
-  <section class="noteblock" id="call"><h3>Call Notes</h3>
-    <div class="input-row" id="call1"><input type="text" id="who" name="who" placeholder="Name"></div>
-    <div class="input-row" id="call2"><textarea id="what1" name="what1" placeholder="What?"></textarea></div>
-    <div class="input-row" id="call3"><textarea id="resolv" name="resolv" placeholder="Resolution:"></textarea>
-    </div>
-    <div class="input-row" id="call4">
+  <!-- #region Call Notes Section | div id=call_1:who;2:what1;3:resolv;4:follow | ---------------------------------------------->
+  <section class="noteblock" id="call"><h3>DURING! Call Notes</h3>
+    <div class="input-row" id="call1">
+      <input type="text" id="who" name="who" placeholder="Name">
       <select name="follow" id="follow">
         <option value="" disabled selected>no</option>
         <option value="yes">yes</option>
@@ -92,7 +72,13 @@
         <option value="call w/ appt date">callappt</option>
         <option value="text appt date">smsappt</option>
       </select>
-      <label for="follow">Follow-up?</label>
+      <label for="follow">↩️</label>
+    </div>
+    <div class="input-row" id="call2">
+      <textarea id="what1" name="what1" placeholder="What?"></textarea>
+    </div>
+    <div class="input-row" id="call3">
+      <textarea id="resolv" name="resolv" placeholder="Resolution:"></textarea>
     </div>
     <div class="accordion" id="calldispos">
       <div class="accordion-header">
@@ -142,22 +128,26 @@
       </div>
     </div>
     <div id="callbtns">
-      <button type="button" onclick="saveBlock('call')">Save</button>
-      <button type="butt
-      ikon" onclick="copyBlock('call')">Copy</button>
+      <button onclick="saveBlock('call', ['who', 'follow', 'what1', 'resolv'])">Save</button>
+      <button onclick="copyBlock('call')">Copy</button>
+      <button onclick="downloadOutput('call')">Download</button>
+      <button onclick="printOutput('call')">Print</button>
+      <button onclick="resetBlock('call', ['who', 'follow', 'what1', 'resolv'])">Reset</button>
     </div>
   </section>
-  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  <!-- #endregion -------------------------------------------------------------------------------------------------------------->
   <hr>
-  <!-- #region CX Info Section | id=cxnfo_1:acct,phone;2:appt,branch;3:wantdate,wanttime;4:last,before ------------------------>
+  <!-- #region CX Info Section | id=cxnfo_1:acct,phone;2:appt,cxbranch;3:wantdate,wanttime;4:last,befo ------------------------->
   <section class="noteblock" id="cxnfo">
-    <h3>CX Info</h3>
+    <h3>Customer Information</h3>
     <div class="input-row" id="cxnfo1">
-      <input type="number" name="acct" id="acct" placeholder="Acct" maxlength="8" min="1000" size="8rem" max="99999999">
-      <input type="tel" name="phone" id="phone" placeholder="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+      <label for="acct">&nbsp;CX#</label>
+      <input type="number" name="acct" id="acct" maxlength="8" min="1000" size="8rem" max="99999999">
+      <label for="phone">&nbsp;📞</label>
+      <input type="tel" name="phone" id="phone" placeholder="555-555-5555" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
     </div>
     <div class="input-row" id="cxnfo2">
-      <select name="branch" id="branch">
+      <select name="cxbranch" id="cxbranch">
         <option value="" disabled selected>Branch</option>
         <option value="Avon">Avon</option>
         <option value="Bloomfield">Bloomfield</option>
@@ -200,27 +190,32 @@
         <option value="Willow Grove">Willow Grove</option>
         <option value="York">York</option>
       </select>
+      <label for="appt">📆</label>
       <input type="date" id="appt" name="appt" placeholder="mm/dd/yyyy">
-      <label for="date">Appt</label>
     </div>
     <div class="input-row" id="cxnfo3">
       <input type="text" name="wantdate" id="wantdate" placeholder="Pref Date">
       <input type="text" name="wanttime" id="wanttime" placeholder="Pref Time">
     </div>
     <div class="input-row" id="cxnfo4">
-      <label for="date">Last:</label>
+      <label for="last">◀️</label>
       <input type="date" id="last" name="last" placeholder="mm/dd/yyyy">
+      <label for="befo">⏪</label>
+      <input type="date" id="befo" name="befo" placeholder="mm/dd/yyyy">
     </div>
     <div id="cxnfobtns">
-      <button type="button" onclick="saveBlock('cxinfo')">Save</button>
-      <button type="button" onclick="copyBlock('cxinfo')">Copy</button>
+      <button onclick="saveBlock('cxinfo', ['acct', 'phone', 'cxbranch', 'appt', 'wantdate', 'wanttime', 'last', 'befo'])">Save</button>
+      <button onclick="copyBlock('cxinfo')">Copy</button>
+      <button onclick="downloadOutput('cxinfo')">Download</button>
+      <button onclick="printOutput('cxinfo')">Print</button>
+      <button onclick="resetBlock('cxinfo', ['acct', 'phone', 'cxbranch', 'appt', 'wantdate', 'wanttime', 'last', 'befo'])">Reset</button>
     </div>
   </section>
-  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  <!-- #endregion -------------------------------------------------------------------------------------------------------------->
   <hr>
-  <!-- #region Reservice Section | id=rsvc_1:what;2:where;3:when;4:howmany ---------------------------------------------------->
-  <div class="noteblock" id="rsvc">
-    <h3>Reservice</h3>
+  <!-- #region Reservice Section | id=rsvc_1:what2;2:where;3:when;4:howmany ---------------------------------------------------->
+  <section class="noteblock" id="rsvc">
+    <h3>Reservice Appointment </h3>
     <div class="input-row" id="rsvc1">
       <textarea id="what2" name="what2" placeholder="What?"></textarea>
     </div>
@@ -234,15 +229,18 @@
       <input type="text" name="howmany" id="howmany" placeholder="How Many?">
     </div>
     <div id="rsvcbtns">
-      <button type="button" onclick="saveBlock('rsvc')">Save</button>
-      <button type="button" onclick="copyBlock('rsvc')">Copy</button>
+      <button onclick="saveBlock('rsvc', ['what2', 'where', 'when', 'howmany'])">Save</button>
+      <button onclick="copyBlock('rsvc')">Copy</button>
+      <button onclick="downloadOutput('rsvc')">Download</button>
+      <button onclick="printOutput('rsvc')">Print</button>
+      <button onclick="resetBlock('rsvc', ['what2', 'where', 'when', 'howmany'])">Reset</button>
     </div>
-  </div>
-  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  </section>
+  <!-- #endregion -------------------------------------------------------------------------------------------------------------->
   <hr>
-  <!-- #region Regular Appt Section | id=rglr 1:reason;2:Context;3:situation; ------------------------------------------------->
-  <div class="noteblock" id="rglr">
-    <h3>Regular Appt</h3>
+  <!-- #region Regular Appt Section | id=rglr_1:reason;2:context;3:situation --------------------------------------------------->
+  <section class="noteblock" id="rglr">
+    <h3>Service Appointment</h3>
     <div class="input-row" id="rglr1">
       <textarea id="reason" name="reason" rows="2" placeholder="Reason?"></textarea>
     </div>
@@ -253,18 +251,24 @@
       <textarea id="situation" name="situation" rows="2" placeholder="Pest Situation:"></textarea>
     </div>
     <div id="rglrbtns">
-      <button type="button" onclick="saveBlock('rglr')">Save</button>
-      <button type="button" onclick="copyBlock('rglr')">Copy</button>
+      <button onclick="saveBlock('rglr', ['reason', 'context', 'situation'])">Save</button>
+      <button onclick="copyBlock('rglr')">Copy</button>
+      <button onclick="downloadOutput('rglr')">Download</button>
+      <button onclick="printOutput('rglr')">Print</button>
+      <button onclick="resetBlock('rglr', ['reason', 'context', 'situation'])">Reset</button>
     </div>
-  </div>
-  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  </section>
+  <!-- #endregion -------------------------------------------------------------------------------------------------------------->
   <hr>
-  <!-- #region Unlock Route Request Section | id=urt_1:urtdate,urtbranch;2:urtname -------------------------------------------->
-  <div class="noteblock" id="urt">
+  <!-- #region Unlock Route Request Section | id=urt_1:urtdate;2:urtbranch;3:urtname;4:urttab ---------------------------------->
+  <section class="noteblock" id="urt">
     <h3>Unlock Route Request</h3>
-    <div class="input-row">
-      <label for="date">Date</label>
+    <div class="input-row" id="urt1">
+      <label for="date">Date:&nbsp;&nbsp;&nbsp;<span style="font-size: .5rem;">&nbsp;</span></label>
       <input type="date" id="urtdate" name="urtdate" placeholder="mm/dd/yyyy">
+    </div>
+    <div class="input-row" id="urt2">
+      <label for="urtbranch">Branch:</label>
       <select name="urtbranch" id="urtbranch">
         <option value="" disabled selected>Branch</option>
         <option value="Avon">Avon</option>
@@ -309,22 +313,32 @@
         <option value="York">York</option>
       </select>
     </div>
-    <div class="input-row">
-      <input type="text" id="urtname" name="urtname" rows="1" placeholder="Route Name">
+    <div class="input-row" id="urt3">
+      <label for="urtname">Route:&nbsp;<span style="font-size: .8rem;">&nbsp;</span></label>
+      <input type="text" id="urtname" name="urtname" placeholder="Route/SP Name">
+    </div>
+    <div class="input-row" id="urt4">
+      <label for="urttab">Tab:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: .7rem;">&nbsp;</span></label>
+      <input type="text" id="urttab" name="urttab" placeholder="Tab">
     </div>
     <div id="urtbtns">
-      <button type="button" onclick="saveBlock('urt')">Save</button>
-      <button type="button" onclick="copyBlock('urt')">Copy</button>
+      <button onclick="saveBlock('urt', ['urtdate', 'urtbranch', 'urtname', 'urttab'])">Save</button>
+      <button onclick="copyBlock('urt')">Copy</button>
+      <button onclick="downloadOutput('urt')">Download</button>
+      <button onclick="printOutput('urt')">Print</button>
+      <button onclick="resetBlock('urt', ['urtdate', 'urtbranch', 'urtname', 'urttab'])">Reset</button>
     </div>
-  </div>
-  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  </section>
+  <!-- #endregion -------------------------------------------------------------------------------------------------------------->
   <hr>
-  <!-- #region Pro Support Section | id=pros_pro:servicepro,1:proscxacct,proscxphone;2:proscxname;3:prosnotes;4:prosbranch ---->
-  <div class="noteblock" id="pros">
+  <!-- #region Pro | id=pros_:spro,1:proscxacct,proscxphone;2:proscxname;3:prosnotes;4:prosbranch;5:type;6:term,init,pay,pfrq -->
+  <section class="noteblock" id="pros">
     <h3>Pro Support</h3>
-    <div class="input-row" id="pro"><input type="text" id="servicepro" name="servicepro" placeholder="Name"></div>
+    <div class="input-row" id="pro">
+      <input type="text" id="spro" name="spro" placeholder="Service Pro Name">
+    </div>
     <div class="input-row" id="pros1">
-      <input type="number" name="proscxacct" id="proscxacct" placeholder="CX Acct" maxlength="8" min="1000" size="8rem" max="99999999">
+      <input type="number" name="proscxacct" id="proscxacct" placeholder="CX#" maxlength="8" min="1000" size="8rem" max="99999999">
       <input type="tel" name="proscxphone" id="proscxphone" placeholder="CX Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
     </div>
     <div class="input-row" id="pros2">
@@ -378,18 +392,9 @@
         <option value="York">York</option>
       </select>
     </div>
-    <div id="prosbtns">
-      <button type="button" onclick="saveBlock('pros')">Save</button>
-      <button type="button" onclick="copyBlock('pros')">Copy</button>
-    </div>
-  </div>
-  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
-  <hr>
-  <!-- #region SP Lead Section | id=splead_1:spltype -------------------------------------------------------------------------->
-  <div class="noteblock" id="splead">
     <h3>Service Pro Lead Setup</h3>
-    <div class="input-row" id="splead1">
-      <select name="spltype" id="spltype">
+    <div class="input-row" id="pros5">
+      <select name="type" id="type">
         <option value="" disabled selected>Select Service</option>
         <option value="Bed Bug Inspection">Bed Bug Inspection</option>
         <option value="Bed Bug Reduction">Bed Bug Reduction</option>
@@ -455,8 +460,8 @@
         <option value="VIP Treatment">VIP Treatment</option>
       </select>
     </div>
-    <div class="input-row" id="splead2">
-      <select name="splterm" id="splterm">
+    <div class="input-row" id="pros6">
+      <select name="term" id="term">
         <option value="" disabled selected>Length</option>
         <option value="0">No Contract</option>
         <option value="12">12 Months</option>
@@ -470,204 +475,115 @@
         <option value="60">60 Months</option>
         <option value="66">66 Months</option>
       </select>
-      <input type="number" name="splinit" id="splinit" placeholder="0000.00" min="0" step="0.01">
-      <input type="number" name="splpay" id="splpay" placeholder="000.00" min="0" step="0.01">
-      <select name="splpayfrq" id="splpayfrq">
+      <input type="number" name="init" id="init" placeholder="0000.00" min="0" step="0.01">
+      <input type="number" name="pay" id="pay" placeholder="000.00" min="0" step="0.01">
+      <select name="splpayfrq" id="pfrq">
         <option value="After Each Completed Service">Aftr</option>
         <option value="Monthly Billing">Mnth</option>
         <option value="Quarterly Billing">Qrtr</option>
         <option value="Custom Billing">Othr</option>
       </select>
     </div>
-    <div id="splbtns">
-      <button type="button" onclick="saveBlock('splead')">Save</button>
-      <button type="button" onclick="copyBlock('splead')">Copy</button>
+    <div id="prosbtns">
+      <button onclick="saveBlock('pros', ['spro', 'proscxacct', 'proscxphone', 'proscxname', 'prosnotes', 'prosbranch', 'type', 'term', 'init', 'pay', 'pfrq'])">Save</button>
+      <button onclick="copyBlock('pros')">Copy</button>
+      <button onclick="downloadOutput('pros')">Download</button>
+      <button onclick="printOutput('pros')">Print</button>
+      <button onclick="resetBlock('pros', ['spro', 'proscxacct', 'proscxphone', 'proscxname', 'prosnotes', 'prosbranch', 'type', 'term', 'init', 'pay', 'pfrq'])">Reset</button>
     </div>
-  </div>
-  <!-- #endregion ------------------------------------------------------------------------------------------------------------->
+  </section>
+  <!-- #endregion -------------------------------------------------------------------------------------------------------------->
   <hr>
-  
   <script>
+    // Save block data and output
+    function saveBlock(blockId, fieldList) {
+      const lines = [];
 
-  const blockFields = {
-  notes: ['note'],
-  call: ['who', 'what1', 'resolv', 'follow'],
-  cxnfo: ['acct', 'phone', 'appt', 'branch', 'wantdate', 'wanttime', 'last'],
-  rsvc: ['what2', 'where', 'when', 'howmany'],
-  rglr: ['reason', 'context', 'situation'],
-  urt: ['urtdate', 'urtbranch', 'urtname'],
-  pros: ['servicepro', 'proscxacct', 'proscxphone', 'proscxname', 'prosnotes', 'prosbranch'],
-  splead: ['spltype', 'splterm', 'splinit', 'splpay', 'splpayfrq']
-  };
-
-    // Load and auto-save for each noteblock
-    window.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.noteblock').forEach(block => {
-        const blockId = block.id;
-        fields.forEach(field => {
-          const el = block.querySelector(`#${field}`);
-          if (!el) return;
-
-          // Load saved value
-          const saved = localStorage.getItem(`${blockId}-${field}`);
-          if (saved) el.value = saved;
-
-          // Auto-save on input
-          el.addEventListener('input', () => {
-            localStorage.setItem(`${blockId}-${field}`, el.value);
-          });
-        });
+      fieldList.forEach(field => {
+        const fullKey = `${blockId}-${field}`;
+        const input = document.getElementById(fullKey);
+        const value = input ? input.value.trim() : '';
+        localStorage.setItem(fullKey, value);
+        lines.push(`${field.toUpperCase()}: ${value}`);
       });
-    });
 
-    // Manual save
-    function saveBlock(blockId) {
-      const block = document.getElementById(blockId);
-      fields.forEach(field => {
-        const el = block.querySelector(`#${field}`);
-        if (el) localStorage.setItem(`${blockId}-${field}`, el.value);
-      });
-      alert(`Saved: ${blockId}`);
+      const timestamp = new Date().toLocaleString();
+      const outputText = `${blockId.toUpperCase()}\n\n${lines.join('\n')}\n\nSaved on: ${timestamp}`;
+      localStorage.setItem(`${blockId}-output`, outputText);
+
+      const outputEl = document.getElementById(`${blockId}-output`);
+      if (outputEl) outputEl.textContent = outputText;
+
+      showPopup('Saved');
     }
 
-    // Copy to clipboard
+    // Copy output to clipboard
     function copyBlock(blockId) {
-      const block = document.getElementById(blockId);
-      const text = fields.map(field => {
-        const label = block.querySelector(`label[for="${field}"]`)?.innerText || field;
-        const value = block.querySelector(`#${field}`)?.value || '';
-        return `${label} ${value}`;
-      }).join('\n\n');
-      navigator.clipboard.writeText(text).then(() => {
-        alert(`Copied: ${blockId}`);
+      const outputText = localStorage.getItem(`${blockId}-output`);
+      if (!outputText) return;
+
+      navigator.clipboard.writeText(outputText).then(() => {
+        showPopup('Copied');
       });
     }
 
+    // Download output as .txt
+    function downloadOutput(blockId) {
+      const outputText = localStorage.getItem(`${blockId}-output`);
+      if (!outputText) return;
 
-    async function copyCXInfo() {
-      try {
-        const acct = document.getElementById("acct")
-        const phone = document.getElementById("phone");
-        const appt = document.getElementById("appt");
-        const branch = document.getElementById("branch");
-        const wantdate = document.getElementById("wantdate");
-        const wanttime = document.getElementById("wanttime");
-
-        if (!acct || !phone || !appt || !branch || !wantdate || !wanttime) throw new Error("Missing CX Info inputs.");
-
-        const text =
-          `CX- ${acct.value}\n` +
-          `Phone: ${phone.value}\n` +
-          `Appt Date: ${appt.value}\n` +
-          `Branch: ${branch.value}\n` +
-          `Preferred Date: ${wantdate.value}\n` +
-          `Preferred Time: ${wanttime.value}\n`;
-
-        await navigator.clipboard.writeText(text);
-        alert("CX Info Copied!");
-      } catch (err) {
-        console.error(err);
-        alert("❌ Unable to copy notes. Please check form elements and clipboard permissions.");
-      }
+      const blob = new Blob([outputText], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `${blockId}.txt`;
+      link.click();
+      URL.revokeObjectURL(link.href);
     }
 
+    // Print output
+    function printOutput(blockId) {
+      const outputText = localStorage.getItem(`${blockId}-output`);
+      if (!outputText) return;
 
-    async function copyAfterCall() {
-      try {
-        const who = document.getElementById("who");
-        const what = document.getElementById("what");
-        const resolution = document.getElementById("resolution");
-        const followup = document.getElementById("followup");
-
-        if (!who || !what || !resolution || !followup) throw new Error("Missing After Call inputs.");
-
-        const text =
-          `Who? ${who.value}\n` +
-          `What? ${what.value}\n` +
-          `Resolution: ${resolution.value}\n` +
-          `Follow-up?: ${followup.value}`;
-
-        await navigator.clipboard.writeText(text);
-        alert("📞 After Call Notes Copied!");
-      } catch (err) {
-        console.error(err);
-        alert("❌ Unable to copy notes. Please check form elements and clipboard permissions.");
-      }
+      const printWindow = window.open('', '', 'width=600,height=600');
+      printWindow.document.write(`<pre>${outputText}</pre>`);
+      printWindow.document.close();
+      printWindow.focus();
+      printWindow.print();
     }
 
-    async function copyReservice() {
-      try {
-        const what = document.getElementById("res_what");
-        const where = document.getElementById("res_where");
-        const when = document.getElementById("res_when");
-        const howmany = document.getElementById("res_howmany");
+    // Reset block with confirmation
+    function resetBlock(blockId, fieldList) {
+      if (!confirm('Are you sure you want to reset this section?')) return;
 
-        if (!what || !where || !when || !howmany) throw new Error("Missing Reservice inputs.");
-
-        const text =
-          `What? ${what.value}\n` +
-          `Where? ${where.value}\n` +
-          `When? ${when.value}\n` +
-          `How Many? ${howmany.value}`;
-
-        await navigator.clipboard.writeText(text);
-        alert("🔧 Reservice Appointment Notes Copied!");
-      } catch (err) {
-        console.error(err);
-        alert("❌ Unable to copy reservice notes. Please check form elements and clipboard permissions.");
-      }
-    }
-
-    async function copyRegular() {
-      try {
-        const reason = document.getElementById("reason");
-        const context = document.getElementById("context");
-        const situation = document.getElementById("situation");
-
-        if (!reason || !context || !situation) throw new Error("Missing Regular Appointment inputs.");
-
-        const text =
-          `Reason? ${reason.value}\n` +
-          `Context: ${context.value}\n` +
-          `Pest Situation: ${situation.value}`;
-
-        await navigator.clipboard.writeText(text);
-        alert("📆 Regular Appointment Notes Copied!");
-      } catch (err) {
-        console.error(err);
-        alert("❌ Unable to copy appointment notes. Please check form elements and clipboard permissions.");
-      }
-    }
-
-    async function copyUnlockRoute() {
-      try {
-        const branch = document.getElementById("rtbranch");
-        const date = document.getElementById("rtdate");
-        const routename = document.getElementById("rtname");
-
-        if (!branch || !date || !routename) throw new Error("Missing Unlock Route Request inputs.");
-
-        const text =
-          `Branch: ${branch.value}\n` +
-          `Date: ${date.value}\n` +
-          `Route Name: ${routename.value}`;
-
-        await navigator.clipboard.writeText(text);
-        alert("📆 Unlock Route Request Copied!");
-      } catch (err) {
-        console.error(err);
-        alert("❌ Unable to copy Unlock Route Request. Please check form elements and clipboard permissions.");
-      }
-    }
-
-    document.querySelectorAll('.accordion-header').forEach(header => {
-      header.addEventListener('click', function () {
-        const accordion = this.parentElement;
-        accordion.classList.toggle('open');
+      fieldList.forEach(field => {
+        const fullKey = `${blockId}-${field}`;
+        localStorage.removeItem(fullKey);
+        const input = document.getElementById(fullKey);
+        if (input) input.value = '';
       });
-    });
+
+      localStorage.removeItem(`${blockId}-output`);
+      const outputEl = document.getElementById(`${blockId}-output`);
+      if (outputEl) outputEl.textContent = '';
+      showPopup('Reset');
+    }
+
+    // Optional: popup feedback
+    function showPopup(message) {
+      const popup = document.createElement('div');
+      popup.textContent = message;
+      popup.style.position = 'fixed';
+      popup.style.bottom = '20px';
+      popup.style.right = '20px';
+      popup.style.background = '#333';
+      popup.style.color = '#fff';
+      popup.style.padding = '8px 12px';
+      popup.style.borderRadius = '6px';
+      popup.style.zIndex = '9999';
+      document.body.appendChild(popup);
+      setTimeout(() => popup.remove(), 1500);
+    }
   </script>
-
 </body>
-
 </html>
