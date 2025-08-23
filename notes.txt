@@ -82,7 +82,7 @@
     </div>
     <div class="accordion" id="calldispos">
       <div class="accordion-header">
-  Call Dispositions<span class="material-symbols-outlined chevron">chevron_right</span>
+        Call Dispositions<span class="material-symbols-outlined">chevron_right</span>
       </div>
       <div class="accordion-content">
         <ul>
@@ -495,88 +495,95 @@
   <!-- #endregion -------------------------------------------------------------------------------------------------------------->
   <hr>
   <script>
-  // Save block data and output
-  function saveBlock(blockId, fieldList) {
-    const lines = [];
+    // Save block data and output
+    function saveBlock(blockId, fieldList) {
+      const lines = [];
 
-    fieldList.forEach(field => {
-      const input = document.getElementById(field);
-      const value = input ? input.value.trim() : '';
-      localStorage.setItem(`${blockId}-${field}`, value);
-      lines.push(`${field.toUpperCase()}: ${value}`);
-    });
+      fieldList.forEach(field => {
+        const fullKey = `${blockId}-${field}`;
+        const input = document.getElementById(fullKey);
+        const value = input ? input.value.trim() : '';
+        localStorage.setItem(fullKey, value);
+        lines.push(`${field.toUpperCase()}: ${value}`);
+      });
 
-    const timestamp = new Date().toLocaleString();
-    const outputText = `${blockId.toUpperCase()}\n\n${lines.join('\n')}\n\nSaved on: ${timestamp}`;
-    localStorage.setItem(`${blockId}-output`, outputText);
+      const timestamp = new Date().toLocaleString();
+      const outputText = `${blockId.toUpperCase()}\n\n${lines.join('\n')}\n\nSaved on: ${timestamp}`;
+      localStorage.setItem(`${blockId}-output`, outputText);
 
-    showPopup('Saved');
-  }
+      const outputEl = document.getElementById(`${blockId}-output`);
+      if (outputEl) outputEl.textContent = outputText;
 
-  // Copy output to clipboard
-  function copyBlock(blockId) {
-    const outputText = localStorage.getItem(`${blockId}-output`);
-    if (!outputText) return;
+      showPopup('Saved');
+    }
 
-    navigator.clipboard.writeText(outputText).then(() => {
-      showPopup('Copied');
-    });
-  }
+    // Copy output to clipboard
+    function copyBlock(blockId) {
+      const outputText = localStorage.getItem(`${blockId}-output`);
+      if (!outputText) return;
 
-  // Download output as .txt
-  function downloadOutput(blockId) {
-    const outputText = localStorage.getItem(`${blockId}-output`);
-    if (!outputText) return;
+      navigator.clipboard.writeText(outputText).then(() => {
+        showPopup('Copied');
+      });
+    }
 
-    const blob = new Blob([outputText], { type: 'text/plain' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `${blockId}.txt`;
-    link.click();
-    URL.revokeObjectURL(link.href);
-  }
+    // Download output as .txt
+    function downloadOutput(blockId) {
+      const outputText = localStorage.getItem(`${blockId}-output`);
+      if (!outputText) return;
 
-  // Print output
-  function printOutput(blockId) {
-    const outputText = localStorage.getItem(`${blockId}-output`);
-    if (!outputText) return;
+      const blob = new Blob([outputText], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `${blockId}.txt`;
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
 
-    const printWindow = window.open('', '', 'width=600,height=600');
-    printWindow.document.write(`<pre>${outputText}</pre>`);
-    printWindow.document.close();
-    printWindow.focus();
-    printWindow.print();
-  }
+    // Print output
+    function printOutput(blockId) {
+      const outputText = localStorage.getItem(`${blockId}-output`);
+      if (!outputText) return;
 
-  // Reset block with confirmation
-  function resetBlock(blockId, fieldList) {
-    if (!confirm('Are you sure you want to reset this section?')) return;
+      const printWindow = window.open('', '', 'width=600,height=600');
+      printWindow.document.write(`<pre>${outputText}</pre>`);
+      printWindow.document.close();
+      printWindow.focus();
+      printWindow.print();
+    }
 
-    fieldList.forEach(field => {
-      localStorage.removeItem(`${blockId}-${field}`);
-      const input = document.getElementById(field);
-      if (input) input.value = '';
-    });
+    // Reset block with confirmation
+    function resetBlock(blockId, fieldList) {
+      if (!confirm('Are you sure you want to reset this section?')) return;
 
-    localStorage.removeItem(`${blockId}-output`);
-    showPopup('Reset');
-  }
+      fieldList.forEach(field => {
+        const fullKey = `${blockId}-${field}`;
+        localStorage.removeItem(fullKey);
+        const input = document.getElementById(fullKey);
+        if (input) input.value = '';
+      });
 
-  // Optional: popup feedback
-  function showPopup(message) {
-    const popup = document.createElement('div');
-    popup.textContent = message;
-    popup.style.position = 'fixed';
-    popup.style.bottom = '20px';
-    popup.style.right = '20px';
-    popup.style.background = '#333';
-    popup.style.color = '#fff';
-    popup.style.padding = '8px 12px';
-    popup.style.borderRadius = '6px';
-    popup.style.zIndex = '9999';
-    document.body.appendChild(popup);
-    setTimeout(() => popup.remove(), 1500);
-  }
-</script>
+      localStorage.removeItem(`${blockId}-output`);
+      const outputEl = document.getElementById(`${blockId}-output`);
+      if (outputEl) outputEl.textContent = '';
+      showPopup('Reset');
+    }
+
+    // Optional: popup feedback
+    function showPopup(message) {
+      const popup = document.createElement('div');
+      popup.textContent = message;
+      popup.style.position = 'fixed';
+      popup.style.bottom = '20px';
+      popup.style.right = '20px';
+      popup.style.background = '#333';
+      popup.style.color = '#fff';
+      popup.style.padding = '8px 12px';
+      popup.style.borderRadius = '6px';
+      popup.style.zIndex = '9999';
+      document.body.appendChild(popup);
+      setTimeout(() => popup.remove(), 1500);
+    }
+  </script>
 </body>
 </html>

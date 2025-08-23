@@ -2,13 +2,14 @@
 
 /* Base Styles */
 html {
-    font-size: 20px;
+    font-size: 16px;
 }
 body {
   margin: 0;
   font-family: 'Roboto', Arial, sans-serif;
   background: #0d1117;
   color: #c9d1d9;
+  line-height: normal;
 }
 .sidebar {
   position: fixed;
@@ -132,6 +133,9 @@ body {
   color: #fff;
   display: flex;
   align-items: center;
+  gap: 0.5em;
+  line-height: 1.5;
+  align-items: center;
   gap: 8px;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
   font-weight: 500 !important;
@@ -144,6 +148,8 @@ body {
   gap: 8px;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7) !important;
   font-weight: 500 !important;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 .card-description {
   color: #acb6c2;
@@ -165,7 +171,9 @@ body {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  font-size: inherit;
+  line-height: inherit;
+  /* Removed position: relative; top: 1px; and transition for proper button styling */
   transition: background 0.2s, color 0.2s;
 }
 .card-btn:hover {
@@ -180,9 +188,7 @@ body {
 }
 
 .section-title {
-  font-size: 1.5rem;
-  color: #fff;
-  margin-bottom: 1rem;
+
 }
 .section-title .material-symbols-outlined {
   font-size: 1.5rem;
@@ -190,25 +196,26 @@ body {
 }
 
 .sub{
-  font-size: 1.3rem;
-  color: #f9fcff;
+  font-size: 1.1rem;
   margin-top: .5rem;
+  color: #fff;
 }
 .sub .material-symbols-outlined {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 3px;
+}
+.material-symbols-outlined {
+  vertical-align: middle;
 }
 ul {
-    display: block;
-    list-style-type: none;
-    margin-block-start: .5em;
-    margin-block-end: .5em;
-    padding-inline-start: 1rem;
-    padding-inline-end: .5rem;
-    unicode-bidi: isolate;
-    line-height: 1.2;
+  list-style-type: none; /* Removes bullets or numbers */
+  padding: 0;
+  margin: .5rem .5rem 1em 0; /* Removes default margin */
 }
-li {
-  padding: 0.4rem;
+
+ul li {
+  margin-bottom: 10px; /* Adjusts spacing between list items */
+  font-size: 1rem;
 }
 .accordion {
   background: #161b22;
@@ -217,37 +224,45 @@ li {
   border: 1px solid #313943;
 }
 .accordion-header {
-  cursor: pointer;
-  padding: .5rem 1rem;
-  font-size: 1.4rem;
-  color: #fff;
-  border-bottom: 1px solid #00ff60;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0.35rem 0.8rem;
+  font-size: 1.2rem;
+  color: #fff;
+}
+.accordion-header > div {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.accordion-header .material-symbols-outlined {
+  vertical-align: middle;
+  font-size: 1.3em;
+  transition: none;
+}
+.accordion-header .chevron {
+  transition: transform 0.2s;
+}
+.accordion.open .accordion-header .chevron {
+  transform: rotate(90deg);
 }
 .accordion-content {
-  padding: 1rem;
+  padding: 0.5rem 1rem 1rem 1rem;
   color: #b5c0cd;
   display: none;
-  line-height: 1.5;
   font-size: 1rem;
 }
 .accordion.open .accordion-content {
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 500;
   display: block;
-  display: flex;
   align-items: center;
   gap: 8px;
 }
-.accordion-header .material-symbols-outlined {
-  margin-left: 12px;
-  transition: transform 0.2s;
+.accordion-header .material-symbols-outlined symbols {
+  margin-left: 0;
   color: #fff;
-}
-.accordion.open .accordion-header .material-symbols-outlined {
-  transform: rotate(90deg);
 }
 .symbol-line {
   font-size: 1.4rem;
@@ -258,49 +273,6 @@ li {
   gap: 8px;
 }
 
-/*
-@media (max-width: 900px) {
-  .fixed-top {
-    height: 48px;
-    font-size: 1.1rem;
-    padding: 0 1rem;
-  }
-  .sidebar {
-    width: 56px;
-    padding-top: 12px;
-    align-items: center;
-    top: 48px;
-    height: calc(100% - 48px);
-  }
-  .sidebar-label {
-    display: none;
-  }
-  .sidebar .material-symbols-outlined {
-    font-size: 22px;
-    margin-bottom: 0;
-    display: flex;
-    justify-content: center;
-  }
-  .main-content {
-    margin-left: 56px;
-    margin-top: 0;
-    padding: 18px 2vw 70px 2vw;
-  }
-  .footer {
-    font-size: 0.85rem;
-    padding: 0.7rem 0 0.3rem 0;
-  }
-  .dashboard-container {
-    flex-direction: column;
-  }
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-
-}
- 
-/* Welcome message styling for topic pages */
 .welcome-message {
   margin-bottom: 2rem;
   font-size: 1.1rem;
@@ -321,6 +293,33 @@ html{font-size: 16px;}
     gap: 1.2rem;
   }
 }
+/* Global 3-column grid layout for reusable quick-reference sections */
+.grid-3col {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.grid-section {
+  flex: 1 1 300px;
+  min-width: 250px;
+}
+.grid-title {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+.grid-subsection {
+  margin-bottom: 1em;
+}
+.grid-subtitle {
+  font-style: italic;
+  margin-bottom: 0.3em;
+}
+.grid-list {
+  margin: 0;
+  padding-left: 1em;
+  font-size: 0.95em;
+}
 .inline-icon {
    vertical-align: bottom;
 }
@@ -328,8 +327,7 @@ html{font-size: 16px;}
   text-align: center;
 }
 .s {
-  color: rgb(255, 0, 255);
-  font-size: 1.2rem;
+  color: #a8ffc9;
   font-weight: 400;
 }
 .indent {
