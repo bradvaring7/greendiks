@@ -306,14 +306,16 @@ html{font-size: 16px;}
 }
 .grid-title {
   font-weight: bold;
+  font-size: 1.2rem;
   margin-bottom: 0.5em;
 }
 .grid-subsection {
   margin-bottom: 1em;
 }
 .grid-subtitle {
-  font-style: italic;
-  margin-bottom: 0.3em;
+  color: #fff;
+  margin-bottom: 0.5em;
+  font-size: 1.1rem;
 }
 .grid-list {
   margin: 0;
