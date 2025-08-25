@@ -9,23 +9,26 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="fixed-top">Brad Varing</div>
+  <section class="fixed-top">Brad Varing</section>
   <nav class="sidebar">
     <a href="index.html"><span class="material-symbols-outlined sidebar-icon" title="Home">home</span></a>
     <a href="callflow.html"><span class="material-symbols-outlined sidebar-icon" title="Call Flow">call</span></a>
-     <a href="essentials.html"><span class="material-symbols-outlined sidebar-icon" title="Essentials">home_repair_service</a>
+    <a href="essentials.html"><span class="material-symbols-outlined sidebar-icon" title="Essentials">home_repair_service</a>
     <a href="scheduling.html"><span class="material-symbols-outlined icon-active sidebar-icon" title="Scheduling">calendar_month</span></a>
     <a href="billing.html"><span class="material-symbols-outlined sidebar-icon" title="Billing">receipt_long</span></a>
     <a href="services.html"><span class="material-symbols-outlined sidebar-icon" title="Services">house_with_shield</span></a>
     <a href="prosupport.html"><span class="material-symbols-outlined sidebar-icon" title="Pro Support">shield_person</span></a>
-    </nav>
-  <div class="dashboard-container">
+  </nav>
+  <section class="dashboard-container">
     <main class="main-content">
-      <div class="section-title">Scheduling</div>
-      <div class="welcome-message s">
-      </div>
-      <div class="accordion" id="9-Mile Rule">
-        <div class="accordion-header">9-Mile Rule<span class="material-symbols-outlined">chevron_right</span></div>
+      <span class="section-title">Scheduling</span>
+      <span class="welcome-message s">
+      </span>
+      <section class="accordion" id="9mile">
+        <div class="accordion-header">
+          <div><span class="material-symbols-outlined symbols txtr">counter_9</span>9-Mile Rule</div>
+          <span class="material-symbols-outlined chevron">chevron_right</span>
+        </div>
         <div class="accordion-content">
           <div class="sub">Schedule w/o Permission If Yes to All 3</div>
           <ul>
@@ -39,9 +42,12 @@
             <li>No more than 3 over 9 miles</li>
           </ul>
         </div>
-      </div>
-      <div class="accordion" id="Scheduling-Rules">
-        <div class="accordion-header">Scheduling Rules<span class="material-symbols-outlined">chevron_right</span></div>
+      </section>
+      <section class="accordion" id="scheduling-rules">
+        <div class="accordion-header">
+          <div><span class="material-symbols-outlined symbols txtr">rule</span>Scheduling Rules</div><span
+            class="material-symbols-outlined chevron">chevron_right</span>
+        </div>
         <div class="accordion-content">
           <ul>
             <li>🚫 NO same day appt w/o permission from the BM, SM, Field Support or SP.</li>
@@ -61,13 +67,28 @@
             <li>📆 Move up next appt date vs reservice appt if within 30 days.</li>
           </ul>
         </div>
-      </div>
-      <div class="accordion" id="cancellations">
-        <div class="accordion-header">Cancellations<span class="material-symbols-outlined">chevron_right</span></div>
+      </section>
+      <section class="accordion" id="unlock-route">
+        <div class="accordion-header">
+          <div><span class="material-symbols-outlined symbols txtr">lock_open</span>Unlocking Routes</div><span
+            class="material-symbols-outlined chevron">chevron_right</span>
+        </div>
+        <div class="accordion-content">
+
+        </div>
+      </section>
+      <section class="accordion" id="cancellations">
+        <div class="accordion-header">
+          <div><span class="material-symbols-outlined symbols txtr">free_cancellation</span>Cancelling Appointments</div>
+          <span class="material-symbols-outlined chevron">chevron_right</span>
+        </div>
         <div class="accordion-content">'No Show' same day appts and Cancel or reschedule future appts.</div>
-      </div>
-      <div class="accordion" id="dump-routes">
-        <div class="accordion-header">Dump Routes<span class="material-symbols-outlined">chevron_right</span></div>
+      </section>
+      <section class="accordion" id="dump-routes">
+        <div class="accordion-header">
+          <div><span class="material-symbols-outlined symbols txtr">delivery_truck_speed</span>Dump Routes</div>
+          <span class="material-symbols-outlined chevron">chevron_right</span>
+        </div>
         <div class="accordion-content">
           <ul>
             <li>'No Tech Assigned'</li>
@@ -75,81 +96,28 @@
             <li>Don't schedule on Mondays DRs.</li>
           </ul>
         </div>
-      </div>
-      <div class="accordion" id="tickets">
-
-        <div class="accordion-header">Scheduling Requests<span class="material-symbols-outlined">chevron_right</span></div>
-        <div class="accordion-content">   
-          <div class="sub" style="padding: 0.2rem 0;">Reservice: &nbsp;</div>
-          <div class="buttons">
-                <a href="https://greenix.atlassian.net/servicedesk/customer/portal/31/group/100/create/390" class="btn">📃 Submit</a>
-                <a href="https://greenix.atlassian.net/servicedesk/customer/user/requests?pIds=31&page=1&reporter=all&rtIds=390&sortBy=createdDate&sortOrder=DESC&statuses=open&statuses=closed" class="btn">👁️ View</a>
-            </div>
-          <div class="sub" style="padding: 0.2rem 0;">Route: &nbsp;</div>
-          <div class="buttons">
-                <a href="https://greenix.atlassian.net/servicedesk/customer/portal/32/group/104" class="btn">📃 Submit</a>
-                <a href="https://greenix.atlassian.net/servicedesk/customer/user/requests?pIds=32&page=1&reporter=all&rtIds=399&sortBy=createdDate&sortOrder=DESC&statuses=open&statuses=closed" class="btn">👁️ View</a>
-            </div>
-          <div class="sub" style="padding: 0.2rem 0;">Rove: &nbsp;</div>
-          <div class="buttons">
-                <a href="https://greenix.atlassian.net/servicedesk/customer/portal/32/group/1148" class="btn">📃 Submit</a>
-                <a href="https://greenix.atlassian.net/servicedesk/customer/user/requests?pIds=32&page=1&reporter=all&rtIds=1751&sortBy=createdDate&sortOrder=DESC&statuses=open&statuses=closed" class="btn">👁️ View</a>
-            </div>
-          <div class="sub" style="padding: 0.2rem 0;">Priority: &nbsp;</div>
-          <div class="buttons">
-                <a href="https://greenix.atlassian.net/servicedesk/customer/portal/40/group/113/create/518" class="btn">📃 Submit</a>
-                <a href="https://greenix.atlassian.net/servicedesk/customer/user/requests?pIds=40&page=1&reporter=all&rtIds=518&sortBy=createdDate&sortOrder=DESC&statuses=open&statuses=closed" class="btn">👁️ View</a>
+      </section>
+      <section class="dashboard-grid" id="tickets">
+        <div class="dashboard-card" id="reservice">
+          <div class="card-title txtr"><span class="material-symbols-outlined txtr">source_notes</span>Reservice</div>
+          <div class="card-description">Share Kendyll | Please notify customer by SMS and include when marked DONE apptdate/notified. Thx!</div>
+          <div class="card-links">
+            <a href="https://greenix.atlassian.net/servicedesk/customer/portal/31/group/100/create/390" target="_blank" class="card-btn">Submit</a>
+            <a href="https://greenix.atlassian.net/servicedesk/customer/user/requests?pIds=31&page=1&reporter=all&rtIds=390&sortBy=createdDate&sortOrder=DESC&statuses=open&statuses=closed" target="_blank" class="card-btn">View</a>
           </div>
-      </div>
-      </div>
-                <section class="dashboard-section">
-        <div class="dashboard-grid">
-          <div class="dashboard-card">
-            <div class="card-title txtr"><span class="material-symbols-outlined txtr">call</span>Call Flow</div>
-            <div class="card-description">Intro, Discovery, Acknowledge, Align, Assure, Resolution, Procedures, Professionalism, Closing, Compliance, Outro
-              professionally.</div>
-            <div class="card-links">
-              <a href="callflow.html" class="card-btn">Go Call Flow</a>
-            </div>
-          </div>
-          <div class="dashboard-card">
-            <div class="card-title"><span class="material-symbols-outlined">calendar_month</span>Scheduling</div>
-            <div class="card-description">Scheduling keeps your team and customers organized. Learn about best
-              practices, tools, and tips for efficient appointment management and resource allocation.</div>
-            <div class="card-links">
-              <a href="scheduling.html" class="card-btn">Go Schedule</a>
-            </div>
-          </div>
-          <div class="dashboard-card">
-            <div class="card-title"><span class="material-symbols-outlined">receipt_long</span>Billing</div>
-            <div class="card-description">Billing covers invoices, payments, and support. Find resources and guidance
-              for managing customer accounts, processing payments, and resolving billing issues.</div>
-            <div class="card-links">
-              <a href="billing.html" class="card-btn">Go Billing</a>
-            </div>
-          </div>
-          <div class="dashboard-card">
-            <div class="card-title"><span class="material-symbols-outlined">build</span>Services</div>
-            <div class="card-description">Services include all offerings and support provided to customers. Explore
-              service types, support options, and resources for delivering exceptional value.</div>
-            <div class="card-links">
-              <a href="services.html" class="card-btn">Go Services</a>
-            </div>
-          </div>
-          <div class="dashboard-card">
-            <div class="card-title"><span class="material-symbols-outlined">shield_person</span>Pro Support</div>
-            <div class="card-description">Intro: Thank you for calling Pro Support! This is Brad. Who do I have the
-              pleasure of speaking with?</div>
-            <div class="card-links">
-              <a href="prosupport.html" class="card-btn">Go Pro Support</a>
-            </div>
+        </div>
+        <div class="dashboard-card" id="service">
+          <div class="card-title"><span class="material-symbols-outlined">article</span>Scheduling</div>
+          <div class="card-description">Share Kendyll | Please notify customer by SMS and include when marked DONE apptdate/notified. Thx!</div>
+          <div class="card-links">
+            <a href="https://greenix.atlassian.net/servicedesk/customer/portal/32" target="_blank" class="card-btn">Submit</a>
+            <a href="https://greenix.atlassian.net/servicedesk/customer/user/requests?pIds=32&pIds=32&page=1&reporter=all&rtIds=399&rtIds=1751&sortBy=createdDate&sortOrder=DESC&statuses=open&statuses=closed" target="_blank" class="card-btn">View</a>
           </div>
         </div>
       </section>
     </main>
-  </div>
+  </section>
   <footer class="footer footer-center">Brad Varing &copy; 2025</footer>
-  
   <script>
     document.querySelectorAll('.accordion-header').forEach(header => {
       header.addEventListener('click', function() {
