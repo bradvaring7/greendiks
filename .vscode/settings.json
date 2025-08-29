@@ -16,5 +16,6 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "prettier.singleAttributePerLine": false,
-    "prettier.printWidth": 1000
+    "prettier.printWidth": 1000,
+    "liveServer.settings.port": 5501
 }
