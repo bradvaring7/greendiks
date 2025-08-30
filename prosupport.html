@@ -28,78 +28,97 @@
           <p>How are you doing today?</p>
           <p>What can I help you with?</p>
       </div>
-      <div class="accordion" id="verify">
-        <div class="accordion-header">Verify Customer Info<span class="material-symbols-outlined">chevron_right</span></div>
-        <div class="accordion-content">Verify you have the right customer.  Customer info should be provided by the SP.</div>
-      </div>
-      <div class="accordion" id="discovery">
-        <div class="accordion-header">
-          <div><span class="material-symbols-outlined symbols txtr">live_help</span>Discovery - 2 Diagnostic ?s</div>
-          <span class="material-symbols-outlined chevron">chevron_right</span>
-        </div>
-        <div class="accordion-content">
-          <ul class="s">
-            <li>Okay, so you are wanting to ______ today?<li>
-            <li>Okay, so we are scheduling an Initial (Subscription Name) on your route for today?</li>
-            <li>Okay, so we need to no show this appointment for today.</li>
-            <li>Right. You want me to get this rescheduled for the customer?</li>
-            <li>You want to get some jobs added to your right?</li>
-            <li>Besides that, is there anything else I can take care of your while I'm at it?</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion" id="triplea">
-        <div class="accordion-header">
-          <div><span class="material-symbols-outlined symbols txtr">thumb_up</span><span
-              class="material-symbols-outlined symbols txtr">handshake</span><span
-              class="material-symbols-outlined symbols txtr">verified</span>Triple A</div><span
-            class="material-symbols-outlined chevron">chevron_right</span>
-        </div>
-        <div class="accordion-content">
-          <div class="sub">Acknowledge</div>
-          <ul class="s">
-            <li>Thank you for calling in to setup that up for them.</li>
-            <li>Okay so we are scheduling a subscription on your route for today?</li>
-            <li><span style="color: #fff">(Thanking counts for acknowledge)</li>
-            <li>I can definitely get do that setup/scheduled for you.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion" id="leads">
-        <div class="accordion-header">
-          <div><span class="material-symbols-outlined symbols txtr">contract_edit</span>Leads</div><span
-            class="material-symbols-outlined chevron">chevron_right</span>
-        </div>
-        <div class="accordion-content">
-          <div class="sub">Ask For the Subscription Details</div>
-          <ul class="s">
-            <li>What is the subscription type?</li>
-            <li>For twelve months?</li>
-            <li>And the prices?</li>
-          </ul>
-          Get the Service pro's full name if you don't have it already.
-        </div>
-      </div>
-      <div class="accordion" id="initials">
-        <div class="accordion-header">
-          <div><span class="material-symbols-outlined symbols txtr">rocket_launch</span>Initials</div><span
-            class="material-symbols-outlined chevron">chevron_right</span>
-        </div>
-        <div class="accordion-content">
-          <div class="sub">Check Agreement Is Signed</div>
-          <div class="sub">Ask If Okay to Charge Initial Fee</div>
-          <div class="sub">Ask If They Can Hold</div>
-            <ul>
-              <li>Charge the initial fee limiting it to the subscription.</li>
-              <li>If the payments fails but we havea card setup for autopay, it okay to proceeed.</li>
-              <li>Schedule the Initial using the suscription with "Intial' in the name.</li>
-              <li>For upsell, cancel the old subscriptin with Upsell.</li>
-          <div class="sub">Take Off Hold & Review What You Did</div>
-          <div class="sub s">Is there anything else I can do for you today?</div>
-          <div class="sub s">Hey, afte the call you will get a short survey by text. Will you answer it for me. I think it is just 1 or 2 questions.</div>
-          <div class="sub s">Thank you for calling Pro Support.  Have a good day.</div>  
-        </div>
-      </div>
+<!-- Shared Pro Support Call Flow (always visible) -->
+<section class="accordion" id="prosupport-shared">
+  <div class="accordion-header">
+    <div><span class="material-symbols-outlined symbols txtr">support_agent</span>Shared Pro Support Call Flow</div>
+    <span class="material-symbols-outlined chevron">chevron_right</span>
+  </div>
+  <div class="accordion-content">
+    <ul>
+      <li><b>Intro:</b> “Thank you for calling Pro Support! This is __, who do I have the pleasure of speaking with today?”</li>
+      <li><b>Build Rapport:</b> “How are you doing today?”</li>
+      <li><b>Verify Account:</b> Ask for account # or phone # (if needed).</li>
+      <li><b>Diagnostic Questions:</b>
+        <ul>
+          <li>Repeat request back: “So you were needing to ___ today?”</li>
+          <li>“Besides that, is there anything else I can take care of while we’re on the line?”</li>
+        </ul>
+      </li>
+      <li><b>Triple A:</b>
+        <ul>
+          <li><b>Acknowledge:</b> “Got it. You need ___?”</li>
+          <li><b>Align:</b> “Perfect, thanks for calling this in.”</li>
+          <li><b>Assure:</b> “I’ll make sure this gets taken care of right away.”</li>
+        </ul>
+      </li>
+      <li><b>Hold Script:</b> “Do you mind if I put you on a brief hold while I take care of that? Thank you so much, I’ll be back shortly.”</li>
+      <li><b>Outro:</b> “Is there anything else I can take care of for you today?”</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Situation Accordions -->
+<section class="accordion" id="lead-setup">
+  <div class="accordion-header">
+    <div><span class="material-symbols-outlined symbols txtr">assignment_add</span>Setting Up a Lead</div>
+    <span class="material-symbols-outlined chevron">chevron_right</span>
+  </div>
+  <div class="accordion-content">
+    <ul>
+      <li>Gather subscription details (subscription, length, price, rep name).</li>
+      <li>Run <b>Pre-Flight Checklist</b>:
+        <ul>
+          <li>Subscription not active</li>
+          <li>No recent lead</li>
+          <li>Autopay check (+$20 credit)</li>
+          <li>Balances</li>
+          <li>Pricing guide</li>
+          <li>Cross-sell reps</li>
+        </ul>
+      </li>
+      <li>Set up properly → read back details → send agreement to customer (email/phone).</li>
+      <li><b>Notes:</b> can’t send to SP, 24-hour rule, mailed agreements process if needed.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="accordion" id="initial-scheduling">
+  <div class="accordion-header">
+    <div><span class="material-symbols-outlined symbols txtr">event_available</span>Scheduling an Initial</div>
+    <span class="material-symbols-outlined chevron">chevron_right</span>
+  </div>
+  <div class="accordion-content">
+    <ul>
+      <li>Verify agreement signed.</li>
+      <li>Charge Initial Fee (if autopay & fails → don’t schedule).</li>
+      <li>Schedule the initial.</li>
+      <li>If upsell → cancel old subs.</li>
+      <li>Check subscription tab (cancel old, confirm fee, autopay, balances, signed agreement).</li>
+      <li><b>Script:</b> “Just so you and the customer are aware, we are going to collect that Initial Fee of __ while I’m on hold…”</li>
+    </ul>
+  </div>
+</section>
+
+<section class="accordion" id="adding-jobs">
+  <div class="accordion-header">
+    <div><span class="material-symbols-outlined symbols txtr">add_task</span>Adding Jobs to Routes</div>
+    <span class="material-symbols-outlined chevron">chevron_right</span>
+  </div>
+  <div class="accordion-content">
+    <ul>
+      <li>Ask how many jobs & which branch.</li>
+      <li>While on hold:
+        <ul>
+          <li>Use map view (if trained) or recommended routes.</li>
+          <li>Check viability (no red notes, balances >10 days, no escalations).</li>
+          <li>No cherry picking → pick job closest to last job.</li>
+        </ul>
+      </li>
+      <li>Confirm back: “I went ahead and added (jobs), go ahead and refresh to confirm.”</li>
+    </ul>
+  </div>
+</section>
 
     </main>
   </div>
