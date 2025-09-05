@@ -428,3 +428,54 @@ a { color: #00ff60; }  /*Neon Cyan */
   font-weight: 600;
   min-width: 180px;
 }
+/* Covered Pests table */
+#covered-pests-table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+  table-layout: auto;        /* Let columns size to fit content */
+  width: auto;               /* Shrink to fit content */
+  max-width: 100%;           /* Prevent overflow on small screens */
+}
+
+#covered-pests-table th,
+#covered-pests-table td {
+  border: 1px solid #2a2a2a; /* Match your dark theme border */
+  padding: 0.5rem 0.75rem;
+  vertical-align: top;
+  text-align: left;
+}
+
+#covered-pests-table th {
+  background-color: #1e1e1e; /* Dark header */
+  color: #eaeaea;
+  font-weight: 600;
+  white-space: nowrap;       /* Prevent headers from wrapping */
+}
+
+#covered-pests-table ul {
+  margin: .5rem .5rem 1em 0;
+  padding: 0;
+}
+
+#covered-pests-table p {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 0.9em;
+  color: #b0b0b0;
+}
+
+/* Limit width of first column in Covered Pests table */
+#covered-pests-table th:first-child,
+#covered-pests-table td:first-child {
+  max-width: 280px;       /* cap width so it doesn't dominate */
+  white-space: normal;    /* let text wrap */
+  word-break: break-word; /* break long words if needed */
+}
+
+/* Limit width of first column in Covered Pests table */
+#covered-pests-table th:first-child,
+#covered-pests-table td:first-child {
+  max-width: 280px;       /* cap width so it doesn't dominate */
+  white-space: normal;    /* let text wrap */
+  word-break: break-word; /* break long words if needed */
+}
