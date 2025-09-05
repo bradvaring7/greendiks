@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brad Varing - Customer Support Tier 3 Billing</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="fixed-top">Brad Varing</div>
+  <nav class="sidebar">
+  <a href="index.html"><span class="material-symbols-outlined sidebar-icon" title="Home">home</span></a>
+  <a href="callflow.html"><span class="material-symbols-outlined sidebar-icon" title="Call Flow">call</span></a>
+  <a href="essentials.html"><span class="material-symbols-outlined sidebar-icon" title="Essentials">home_repair_service</a>
+  <a href="scheduling.html"><span class="material-symbols-outlined sidebar-icon" title="Scheduling">calendar_month</span></a>
+  <a href="billing.html"><span class="material-symbols-outlined sidebar-icon icon-active " title="Billing">attach_money</span></a>
+  <a href="services.html"><span class="material-symbols-outlined sidebar-icon" title="Services">house_with_shield</span></a>
+  <a href="prosupport.html"><span class="material-symbols-outlined sidebar-icon" title="Pro Support">shield_person</span></a>
+  <a href="connectivity.html"><span class="material-symbols-outlined sidebar-icon" title="Connectivity Test">wifi</span></a>
+  
+  </nav>
+  <div class="dashboard-container">
+    <main class="main-content">
+      <div class="section-title">Billing</div>
+      <div class="welcome-message s">
+      </div>
+      <!-- Billing 1: Workday Billing Tickets -->
+      <section class="accordion" id="billing-1">
+        <div class="accordion-header">
+          <div>
+            <span class="material-symbols-outlined symbols txtr">receipt_long</span>
+            Billing Tickets (Workday)
+          </div>
+          <span class="material-symbols-outlined chevron">chevron_right</span>
+        </div>
+        <div class="accordion-content">
+          <div class="sub">Types of Billing Tickets</div>
+          <ul>
+            <li>Billing: Customer Check Payment Status</li>
+            <li>Billing: Customer Refund Request</li>
+            <li>Billing: General Billing Support</li>
+            <li>Billing: Reverse Coupon</li>
+            <li>Billing: Void Customer Payment</li>
+          </ul>
+          <p><a href="https://www.myworkday.com/greenixpc/wdhelp/helpcenter/create" target="_blank">Create a Workday Ticket</a></p>
+        </div>
+      </section>
+
+      <!-- Billing 2: Check Payments -->
+      <section class="accordion" id="checks">
+        <div class="accordion-header">
+          <div>
+            <span class="material-symbols-outlined symbols txtr">payments</span>
+            Check Payments
+          </div>
+          <span class="material-symbols-outlined chevron">chevron_right</span>
+        </div>
+        <div class="accordion-content">
+          <div class="sub">Address to Send Checks</div>
+          <p>📬 PO BOX 734929, Chicago, IL 60673</p>
+          <div class="sub">Check Information</div>
+          <ul>
+            <li>It can take up to 2 weeks for a check to be deposited.</li>
+            <li>Lockbox services are provided by JP Morgan Chase (this is the name customers will see).</li>
+            <li>If customers pay through their bank’s bill pay service, funds may show as withdrawn a week before we receive the check.</li>
+          </ul>
+        </div>
+      </section>
+      <!-- Billing 4: Coupons -->
+      <section class="accordion" id="coupons">
+        <div class="accordion-header">
+          <div>
+            <span class="material-symbols-outlined symbols txtr">money_off</span>
+            Coupons (Credits)
+          </div>
+          <span class="material-symbols-outlined chevron">chevron_right</span>
+        </div>
+        <div class="accordion-content">
+          <div class="sub">Coupon Codes</div>
+          <table>
+            <tr><td>Billing</td><td>System Error</td></tr>
+            <tr><td>Goodwill</td><td>Field</td></tr>
+            <tr><td>Goodwill</td><td>Office</td></tr>
+            <tr><td>Promotional</td><td>Autopay</td></tr>
+            <tr><td>Promotional</td><td>Referral</td></tr>
+            <tr><td>Promotional</td><td>Collection Promo</td></tr>
+            <tr><td>Scheduling</td><td>Off Cycle</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- Billing 7: Price Increase -->
+      <section class="accordion" id="inflation">
+        <div class="accordion-header">
+          <div>
+            <span class="material-symbols-outlined symbols txtr">trending_up</span>
+            Price Increase (Inflation)
+          </div>
+          <span class="material-symbols-outlined chevron">chevron_right</span>
+        </div>
+        <div class="accordion-content">
+          <p><strong>Script:</strong> “Yes, your price increased due to inflation that caused expenses to rise.”</p>
+          <p><strong>Resolution:</strong> “But I can go ahead and undo that for you now, and change your price back to what it was. No problem at all.”</p>
+        </div>
+      </section>
+
+      <!-- Billing 10: Remove from Collections -->
+      <section class="accordion" id="stopcalling">
+        <div class="accordion-header">
+          <div>
+            <span class="material-symbols-outlined symbols txtr">block</span>
+            Remove from Collections
+          </div>
+          <span class="material-symbols-outlined chevron">chevron_right</span>
+        </div>
+        <div class="accordion-content">
+          <p><a href="https://greenixpc0-my.sharepoint.com/:x:/g/personal/jchild_greenixpc_com/EYDAWuW1c5dPupPvPDB-PVIB9K6ZWITqNXqzBTcA1TFPmg?e=v2aqVz" target="_blank">Remove From Collections Texts and Calls</a></p>
+        </div>
+      </section>
+
+      <!-- Billing 12: Decline Codes -->
+      <section class="accordion" id="declinecodes">
+        <div class="accordion-header">
+          <div>
+            <span class="material-symbols-outlined symbols txtr">error</span>
+            Common Decline Codes
+          </div>
+          <span class="material-symbols-outlined chevron">chevron_right</span>
+        </div>
+        <div class="accordion-content">
+          <p><a href="https://greenixpc0-my.sharepoint.com/:x:/g/personal/nkroeger_greenixpc_com/Ecw2P0Rcc6VKs4NqYv6SXbAB9LeduC84BRUGvELzEMKRNw?rtime=nTgES5zn3Ug" target="_blank">View Full List of Decline Codes</a></p>
+        </div>
+      </section>
+
+
+  <footer class="footer footer-center">Brad Varing &copy; 2025</footer>
+  
+  <script>
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', function() {
+        const accordion = this.parentElement;
+        accordion.classList.toggle('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0 8px 200px 8px;
+      padding: 0;
+      background-color: #00a000;
+      color: rgb(255, 255, 255);
+      line-height: 1.5em;
+    }
+    h3 {
+      font-size: 1.4em;
+      font-weight: 400;
+      padding: 0;
+    }
+    h4 {
+      font-size: 1.2em;
+      font-weight: 400;
+      margin: 0;
+      padding: 0;
+    }
+   input,select,textarea {
+      width: 100%;
+      padding: 4px 6px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #00c300;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 1.2rem !important;
+      font-family: Arial, Helvetica, sans-serif !important;
+      background-color: #000000;
+      color: #00ff00 !important;
+      font-weight: 500 !important;
+      box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.8), 0 1.5px 6px rgba(0, 0, 0, 0.22);
+    }
+
+    .noteblock {
+      background-color: #171d23;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 22px;
+      padding-top: 14px;
+      border-radius: 10px;
+      margin: 10px 0 6px 0;
+      max-width: 600px;
+      color: white !important;
+      box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.8), 0 1.5px 6px rgba(0, 0, 0, 0.22);
+    }
+    button {
+      background-color: #1e1c16;
+      border: 1px solid #00c300 !important;
+      border-radius: 5px;
+      color: antiquewhite;
+      padding: 0px 4px 3px 4px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 2rem;
+      box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.8), 0 1.5px 6px rgba(0, 0, 0, 0.22);
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- After Call Section -->
+    <div class="noteblock" id="aftercall">
+      <h4>After Call Notes</h4>
+      <input type="text" id="who" placeholder="Who?">
+      <textarea id="what" rows="2" placeholder="What?"></textarea>
+      <textarea id="resolution" rows="2" placeholder="Resolution:"></textarea>
+      <input type="text" id="followup" placeholder="Follow-up?">
+      <button onclick="copyAfterCall()">🆗</button>
+    </div>
+    <!-- Reservice Appointment Section -->
+    <div class="noteblock" id="reservice">
+      <h4>Reservice Notes</h4>
+      <textarea id="res_what" rows="2" placeholder="What?"></textarea>
+      <input type="text" id="res_where" placeholder="Where?">
+      <input type="text" id="res_when" placeholder="When?">
+      <input type="text" id="res_howmany" placeholder="How Many?">
+      <button onclick="copyReservice()">🆗</button>
+    </div>
+    <!-- Regular Appointment Section -->
+    <div class="noteblock" id="regular">
+      <h4>Regular Appointment Notes</h4>
+      <textarea id="reason" rows="2" placeholder="Reason?"></textarea>
+      <textarea id="context" rows="2" placeholder="Context:"></textarea>
+      <textarea id="situation" rows="2" placeholder="Pest Situation:"></textarea>
+      <button onclick="copyRegular()">🆗</button>
+    </div>
+    <!-- Unlock Route Section -->
+    <div class="noteblock" id="unlockroute">
+      <h4>Unlock Route Request</h4>
+      <textarea id="rtbranch" rows="1" placeholder="Branch"></textarea>
+      <input type="date" rows="1" id="rtdate" placeholder="Date (mm/dd/yyyy)">
+      <textarea id="rtname" rows="1" placeholder="Route Name"></textarea>
+      <button onclick="copyUnlockRoute()">🆗</button>
+    </div>
+
+    
+  <script>
+    async function copyAfterCall() {
+      try {
+        const who = document.getElementById("who");
+        const what = document.getElementById("what");
+        const resolution = document.getElementById("resolution");
+        const followup = document.getElementById("followup");
+
+        if (!who || !what || !resolution || !followup) throw new Error("Missing After Call inputs.");
+
+        const text =
+          `Who? ${who.value}\n` +
+          `What? ${what.value}\n` +
+          `Resolution: ${resolution.value}\n` +
+          `Follow-up?: ${followup.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("📞 After Call Notes Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy notes. Please check form elements and clipboard permissions.");
+      }
+    }
+
+    async function copyReservice() {
+      try {
+        const what = document.getElementById("res_what");
+        const where = document.getElementById("res_where");
+        const when = document.getElementById("res_when");
+        const howmany = document.getElementById("res_howmany");
+
+        if (!what || !where || !when || !howmany) throw new Error("Missing Reservice inputs.");
+
+        const text =
+          `What? ${what.value}\n` +
+          `Where? ${where.value}\n` +
+          `When? ${when.value}\n` +
+          `How Many? ${howmany.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("🔧 Reservice Appointment Notes Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy reservice notes. Please check form elements and clipboard permissions.");
+      }
+    }
+
+    async function copyRegular() {
+      try {
+        const reason = document.getElementById("reason");
+        const context = document.getElementById("context");
+        const situation = document.getElementById("situation");
+
+        if (!reason || !context || !situation) throw new Error("Missing Regular Appointment inputs.");
+
+        const text =
+          `Reason? ${reason.value}\n` +
+          `Context: ${context.value}\n` +
+          `Pest Situation: ${situation.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("📆 Regular Appointment Notes Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy appointment notes. Please check form elements and clipboard permissions.");
+      }
+    }
+
+    async function copyUnlockRoute() {
+      try {
+        const branch = document.getElementById("rtbranch");
+        const date = document.getElementById("rtdate");
+        const routename = document.getElementById("rtname");
+
+        if (!branch || !date || !routename) throw new Error("Missing Unlock Route Request inputs.");
+
+        const text =
+          `Branch: ${branch.value}\n` +
+          `Date: ${date.value}\n` +
+          `Route Name: ${routename.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("📆 Unlock Route Request Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy Unlock Route Request. Please check form elements and clipboard permissions.");
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

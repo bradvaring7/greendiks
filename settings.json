@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  "editor.wordWrap": "off",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.singleAttributePerLine": true,
+  "prettier.printWidth": 1000
+}

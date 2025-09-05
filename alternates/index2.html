@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hybrid Sidebar + Top Nav</title>
+<link rel="stylesheet" href="style2.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- Left icon sidebar -->
+<aside class="sidebar">
+  <a href="#" title="Home"><i class="fas fa-home"></i></a>
+  <a href="#" title="Search"><i class="fas fa-search"></i></a>
+  <a href="#" title="Settings"><i class="fas fa-cog"></i></a>
+</aside>
+
+<!-- Top navigation -->
+<header class="top-bar">
+  <button class="hamburger" id="menu-toggle"><i class="fas fa-bars"></i></button>
+  
+  <nav class="top-nav">
+    <div class="dropdown">
+      <button class="dropbtn">Menu 1 <i class="fas fa-caret-down"></i></button>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Menu 2 <i class="fas fa-caret-down"></i></button>
+      <div class="dropdown-content">
+        <a href="#">Link A</a>
+        <a href="#">Link B</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Slide-out mobile menu -->
+<nav id="mobile-menu" class="mobile-menu">
+  <button id="close-menu" aria-label="Close menu">&times;</button>
+  <a href="#">Home</a>
+  <a href="#">Search</a>
+  <a href="#">Settings</a>
+  <hr>
+  <a href="#">Menu 1 - Link 1</a>
+  <a href="#">Menu 1 - Link 2</a>
+  <a href="#">Menu 2 - Link A</a>
+</nav>
+
+<!-- Main content -->
+<main class="main-content">
+  <h1>Welcome</h1>
+  <p>This is your main content area. Resize the browser to see responsive behavior.</p>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>© 2025 My Website</p>
+</footer>
+
+<script src="script2.js"></script>
+</body>
+</html>

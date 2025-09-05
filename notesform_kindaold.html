@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 0;
+      background-color: #00a000;
+      color: #cbcbcb;
+      line-height: 1.5em;
+    }
+    h3 {
+      font-size: 1.4em;
+      font-weight: 400;
+      padding: 0;
+      margin: 0;
+    }
+
+    h4 {
+      font-size: 1.2em;
+      font-weight: 400;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 10rem;
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 4px 6px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #00ff60;
+      box-sizing: border-box;
+      font-size: 1.1rem !important;
+      font-family: Arial, Helvetica, sans-serif !important;
+      background-color: #000000;
+      color: #00ff60 !important;
+      font-weight: 500 !important;
+    }
+
+    input[type="date"] {
+      max-width: 9rem;
+      min-width: 9rem !important;
+    }
+    .noteblock {
+      background-color: #171d23;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 22px;
+      padding-top: 14px;
+      margin: 10px 0 6px 0;
+      border: 2px double #5b73bb;
+      max-width: 18rem;
+      min-width: 18rem !important;
+      color: #fff;
+      box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.8), 0 1.5px 6px rgba(0, 0, 0, 0.22);
+    }
+
+    button {
+      background-color: #1e1c16;
+      border: 1px solid #00ff60 !important;
+      border-radius: 5px;
+      color: rgb(255, 255, 255);
+      padding: 0px 4px 3px 4px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 1.35rem;
+      box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.8), 0 1.5px 6px rgba(0, 0, 0, 0.22);
+    }
+
+    .input-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .input-row input {
+      min-width: 0;
+      flex: 1 1 8rem;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #00ff60;
+    }
+
+    #acct {
+      width: 9rem;
+    }
+
+    #phone {
+      width: 10rem;
+    }
+
+    #branch {
+      width: 14rem;
+      margin-right: 1rem;
+    }
+
+    label {
+      font-size: 1.1rem;
+      color: #fff;
+    }
+
+    #scheduled {
+      padding: 0;
+      display: inline-block;
+      border: 1px solid #00ff60;
+      font-size: 1.2rem !important;
+      font-family: Arial, Helvetica, sans-serif !important;
+      background-color: #000000;
+      color: #00ff60 !important;
+      font-weight: 500 !important;
+      box-shadow: 0px 10px 24px rgba(0, 0, 0, 0.8), 0 1.5px 6px rgba(0, 0, 0, 0.22);
+
+    }
+
+    /* Hide the default checkbox */
+    input[type="checkbox"] {
+      
+      /* Removes default styling */
+      -webkit-appearance: none;
+      /* For Safari */
+      width: 1.8rem;
+      height: 1.8rem;
+      appearance: none;
+      margin: 0;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      /* Smooth transition */
+    }
+
+
+    /* Add a checkmark when checked */
+    input[type="checkbox"]:checked::after {
+      content: '✔';
+      /* Unicode checkmark */
+      color: #00ff60;
+      /* White checkmark */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .input-row input[type="checkbox"] {
+      height: 1.2em;
+      min-width: 1.2em;
+      min-height: 1.2em;
+      max-width: 1.2em;
+      max-height: 1.2em;
+      margin-left: 4px;
+      margin-right: k k0;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- CX Info -->
+  <div class="noteblock" id="CXInfo">
+    <h3 style="padding-bottom: 0.4rem;">CX Info</h3>
+    <div class="input-row">
+      <input type="number" name="acct" id="acct" placeholder="Acct" maxlength="8" min="1000" size="8rem" max="99999999">
+      <input type="tel" name="phone" id="phone" placeholder="Phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+    </div>
+    <div class="input-row">
+      <label for="date">Appt:</label>
+      <input type="date" name="appt" id="appt">
+    </div>
+    <div class="input-row">
+      <select name="branch" id="branch">
+        <option value=" ">Select Branch</option>
+        <option value="Avon">Avon</option>
+        <option value="Bloomfield">Bloomfield</option>
+        <option value="Canton">Canton</option>
+        <option value="Cherry Hill">Cherry Hill</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Cincinnati">Cincinnati</option>
+        <option value="Cleveland">Cleveland</option>
+        <option value="Columbus">Columbus</option>
+        <option value="Dayton">Delaware</option>
+        <option value="Delaware">Delaware</option>
+        <option value="Des Moines">Des Moines</option>
+        <option value="Detroit">Detroit</option>
+        <option value="Fishers">Fishers</option>
+        <option value="Fort Wayne">Fort Wayne</option>
+        <option value="Grand Rapids">Grand Rapids</option>
+        <option value="Green Bay">Green Bay</option>
+        <option value="Hilliard">Hilliard</option>
+        <option value="Kalamazoo">Kalamazoo</option>
+        <option value="Kansas City">Kansas City</option>
+        <option value="Lansing">Lansing</option>
+        <option value="Lexington">Lexington</option>
+        <option value="Lansing">Lansing</option>
+        <option value="Louisville">Louisville</option>
+        <option value="Madison">Madison</option>
+        <option value="Milwaukee">Milwaukee</option>
+        <option value="Minneapolis">Minneapolis</option>
+        <option value="Munster">Munster</option>
+        <option value="Omaha">Omaha</option>
+        <option value="Philadelphia">Philadelphia</option>
+        <option value="Pittsburgh">Pittsburgh</option>
+        <option value="Princeton">Princeton</option>
+        <option value="Rove Massachusetts">Rove Massachusetts</option>
+        <option value="Rove Michigan">Rove Michigan</option>
+        <option value="Rove Minnesota">Rove Minnesota</option>
+        <option value="Rove Wisconsin">Rove Wisconsin</option>
+        <option value="Salt Lake City">Salt Lake City</option>
+        <option value="South Bend">South Bend</option>
+        <option value="Toledo">Toledo</option>
+        <option value="Willow Grove">Willow Grove</option>
+        <option value="York">York</option>
+      </select>
+    </div>
+    <div class="input-row">
+      <input type="text" name="wantdate" id="wantdate" placeholder="Pref Date">
+      <input type="text" name="wanttime" id="wanttime" placeholder="Pref Time">
+    </div>
+    <div class="input-row">
+      <button type="button" onclick="saveBlock('noteblock-1')">Save</button>
+      <button type="button" onclick="copyBlock('noteblock-1')">Copy</button>
+    </div>
+    <div class="input-row">
+      <button onclick="copyCXInfo()">
+        Copy
+      </button>
+    </div>
+  </div>
+
+
+  <!-- After Call Section -->
+  <div class="noteblock" id="aftercall">
+    <h4>After Call Notes</h4>
+    <input type="text" id="who" placeholder="Who?">
+    <textarea id="what" rows="2" placeholder="What?"></textarea>
+    <textarea id="resolution" rows="2" placeholder="Resolution:"></textarea>
+    <input type="text" id="followup" placeholder="Follow-up?">
+    <button onclick="copyAfterCall()">🆗</button>
+    <div class="input-row">
+      <button type="button" onclick="saveBlock('noteblock-1')">Save</button>
+      <button type="button" onclick="copyBlock('noteblock-1')">Copy</button>
+    </div>
+  </div>
+  <!-- Reservice Appointment Section -->
+  <div class="noteblock" id="reservice">
+    <h4>Reservice Notes</h4>
+    <textarea id="res_what" rows="2" placeholder="What?"></textarea>
+    <input type="text" id="res_where" placeholder="Where?">
+    <input type="text" id="res_when" placeholder="When?">
+    <input type="text" id="res_howmany" placeholder="How Many?">
+    <button onclick="copyReservice()">🆗</button>
+  </div>
+  <!-- Regular Appointment Section -->
+  <div class="noteblock" id="regular">
+    <h4>Regular Appointment Notes</h4>
+    <textarea id="reason" rows="2" placeholder="Reason?"></textarea>
+    <textarea id="context" rows="2" placeholder="Context:"></textarea>
+    <textarea id="situation" rows="2" placeholder="Pest Situation:"></textarea>
+    <button onclick="copyRegular()">🆗</button>
+  </div>
+  <!-- Unlock Route Section -->
+  <div class="noteblock" id="unlockroute">
+    <h4>Unlock Route Request</h4>
+    <textarea id="rtbranch" rows="1" placeholder="Branch"></textarea>
+    <input type="date" rows="1" id="rtdate" placeholder="Date (mm/dd/yyyy)">
+    <textarea id="rtname" rows="1" placeholder="Route Name"></textarea>
+    <button onclick="copyUnlockRoute()">🆗</button>
+  </div>
+
+  <script>
+    async function copyCXInfo() {
+      try {
+        const acct = document.getElementById("acct")
+        const phone = document.getElementById("phone");
+        const appt = document.getElementById("appt");
+        const branch = document.getElementById("branch");
+        const wantdate = document.getElementById("wantdate");
+        const wanttime = document.getElementById("wanttime");
+
+        if (!acct || !phone || !appt || !branch || !wantdate || !wanttime) throw new Error("Missing CX Info inputs.");
+
+        const text =
+          `CX- ${acct.value}\n` +
+          `Phone: ${phone.value}\n` +
+          `Appt Date: ${appt.value}\n` +
+          `Branch: ${branch.value}\n` +
+          `Preferred Date: ${wantdate.value}\n` +
+          `Preferred Time: ${wanttime.value}\n`;
+
+        await navigator.clipboard.writeText(text);
+        alert("CX Info Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy notes. Please check form elements and clipboard permissions.");
+      }
+    }
+
+
+    async function copyAfterCall() {
+      try {
+        const who = document.getElementById("who");
+        const what = document.getElementById("what");
+        const resolution = document.getElementById("resolution");
+        const followup = document.getElementById("followup");
+
+        if (!who || !what || !resolution || !followup) throw new Error("Missing After Call inputs.");
+
+        const text =
+          `Who? ${who.value}\n` +
+          `What? ${what.value}\n` +
+          `Resolution: ${resolution.value}\n` +
+          `Follow-up?: ${followup.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("📞 After Call Notes Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy notes. Please check form elements and clipboard permissions.");
+      }
+    }
+
+    async function copyReservice() {
+      try {
+        const what = document.getElementById("res_what");
+        const where = document.getElementById("res_where");
+        const when = document.getElementById("res_when");
+        const howmany = document.getElementById("res_howmany");
+
+        if (!what || !where || !when || !howmany) throw new Error("Missing Reservice inputs.");
+
+        const text =
+          `What? ${what.value}\n` +
+          `Where? ${where.value}\n` +
+          `When? ${when.value}\n` +
+          `How Many? ${howmany.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("🔧 Reservice Appointment Notes Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy reservice notes. Please check form elements and clipboard permissions.");
+      }
+    }
+
+    async function copyRegular() {
+      try {
+        const reason = document.getElementById("reason");
+        const context = document.getElementById("context");
+        const situation = document.getElementById("situation");
+
+        if (!reason || !context || !situation) throw new Error("Missing Regular Appointment inputs.");
+
+        const text =
+          `Reason? ${reason.value}\n` +
+          `Context: ${context.value}\n` +
+          `Pest Situation: ${situation.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("📆 Regular Appointment Notes Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy appointment notes. Please check form elements and clipboard permissions.");
+      }
+    }
+
+    async function copyUnlockRoute() {
+      try {
+        const branch = document.getElementById("rtbranch");
+        const date = document.getElementById("rtdate");
+        const routename = document.getElementById("rtname");
+
+        if (!branch || !date || !routename) throw new Error("Missing Unlock Route Request inputs.");
+
+        const text =
+          `Branch: ${branch.value}\n` +
+          `Date: ${date.value}\n` +
+          `Route Name: ${routename.value}`;
+
+        await navigator.clipboard.writeText(text);
+        alert("📆 Unlock Route Request Copied!");
+      } catch (err) {
+        console.error(err);
+        alert("❌ Unable to copy Unlock Route Request. Please check form elements and clipboard permissions.");
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
